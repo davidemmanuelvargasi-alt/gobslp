@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gobierno del Estado de San Luis Potosí (2045–2051) | San Luis Pa’ Delante</title>
+  <meta name="description" content="Sitio institucional del Gobierno del Estado de San Luis Potosí. Administración 2045–2051. Gobernador Lucas Isaiah Cárdenas Plasencia." />
+  <style>
+    :root{
+      --orange:#F57C00;
+      --yellow:#FFC107;
+      --graphite:#1E1E1E;
+      --light:#F4F4F4;
+
+      --bg:#0f0f10;
+      --text:#f5f5f5;
+      --muted:#b7b7b7;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 10px 25px rgba(0,0,0,.35);
+
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1180px;
+
+      /* ✅ Mobile tweaks */
+      --pad: 24px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(900px 450px at 20% 10%, rgba(245,124,0,.22), transparent 60%),
+        radial-gradient(700px 380px at 85% 15%, rgba(255,193,7,.16), transparent 55%),
+        radial-gradient(800px 450px at 50% 90%, rgba(255,255,255,.06), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.35;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:var(--pad)}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(to bottom, rgba(15,15,16,.86), rgba(15,15,16,.55));
+      border-bottom:1px solid var(--border);
+    }
+    .topbar .wrap{display:flex; align-items:center; gap:16px; padding:14px var(--pad)}
+    .brand{
+      display:flex; align-items:center; gap:12px; min-width:260px;
+    }
+    .seal{
+      width:44px; height:44px; border-radius:14px;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,.22), transparent 55%),
+        linear-gradient(135deg, rgba(245,124,0,.95), rgba(255,193,7,.85));
+      box-shadow: 0 10px 25px rgba(245,124,0,.18);
+      border:1px solid rgba(255,255,255,.18);
+      position:relative;
+      overflow:hidden;
+      flex:0 0 auto;
+    }
+    .seal:after{
+      content:"";
+      position:absolute; inset:-40% -40%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), transparent 60%);
+      transform: rotate(25deg);
+    }
+    .brand h1{
+      font-size:14px; margin:0;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.85);
+    }
+    .brand p{margin:2px 0 0; font-size:12px; color:var(--muted)}
+
+    .nav{
+      margin-left:auto;
+      display:flex; gap:10px; align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color:rgba(255,255,255,.9);
+      font-size:12px;
+      text-decoration:none;
+      cursor:pointer;
+      user-select:none;
+      transition:transform .15s ease, background .15s ease, border-color .15s ease;
+      white-space:nowrap;
+    }
+    .chip:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.18)}
+    .chip strong{font-weight:650}
+    .chip .dot{width:8px;height:8px;border-radius:99px;background:var(--orange); box-shadow:0 0 0 3px rgba(245,124,0,.15)}
+
+    /* Hero */
+    .hero{padding:28px 0 8px}
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid var(--border);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      min-width:0;
+    }
+    .cardInner{padding:22px}
+    .kicker{
+      display:flex; align-items:center; gap:10px;
+      font-size:12px; color:rgba(255,255,255,.82);
+      letter-spacing:.12em; text-transform:uppercase;
+    }
+    .kicker .bar{width:22px;height:10px;border-radius:999px;background:linear-gradient(90deg,var(--orange),var(--yellow))}
+    .headline{
+      margin:10px 0 0;
+      font-size:34px;
+      letter-spacing:-.02em;
+      line-height:1.05;
+    }
+    .sub{
+      margin:10px 0 0;
+      color:rgba(255,255,255,.78);
+      font-size:14px;
+      max-width:58ch;
+    }
+
+    .quote{
+      margin-top:16px;
+      padding:14px 16px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.22);
+      display:flex; gap:12px;
+      align-items:flex-start;
+    }
+    .quote .mark{
+      width:28px;height:28px;border-radius:12px;
+      display:grid; place-items:center;
+      background: rgba(245,124,0,.16);
+      border:1px solid rgba(245,124,0,.24);
+      color: rgba(255,255,255,.92);
+      flex:0 0 auto;
+    }
+    .quote b{display:block; font-size:13px; margin-bottom:4px}
+    .quote p{margin:0; color:rgba(255,255,255,.76); font-size:13px}
+
+    /* Palette */
+    .palette .row{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:12px;
+      margin-top:14px;
+    }
+    .swatch{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      padding:12px 14px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      min-width:0;
+    }
+    .swatchLeft{display:flex; align-items:center; gap:12px; min-width:0}
+    .colorBox{
+      width:16px; height:16px; border-radius: 6px;
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow: 0 6px 18px rgba(0,0,0,.25);
+      flex:0 0 auto;
+    }
+    .swatch strong{display:block}
+    .swatch small{display:block; color:rgba(255,255,255,.72)}
+    .swatch code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      font-size:12px;
+      color:rgba(255,255,255,.8);
+      background: rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.10);
+      padding:6px 8px;
+      border-radius: 12px;
+      white-space:nowrap;
+      flex:0 0 auto;
+    }
+
+    .note{
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.03);
+      border:1px dashed rgba(255,255,255,.18);
+      color:rgba(255,255,255,.74);
+      font-size:13px;
+    }
+    .note ul{margin:8px 0 0 18px; padding:0; line-height:1.5}
+
+    /* Sections */
+    section{padding:18px 0}
+    .sectionTitle{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:14px;
+      margin-top:18px;
+      flex-wrap:wrap;
+    }
+    .sectionTitle h2{
+      margin:0;
+      font-size:18px;
+      letter-spacing:.02em;
+    }
+    .sectionTitle p{margin:0; color:var(--muted); font-size:13px}
+
+    /* Controls */
+    .controls{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:14px;
+      align-items:center;
+    }
+    .input, select{
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.90);
+      padding:12px 12px;
+      border-radius: 14px;
+      outline:none;
+      min-width: 220px;
+      flex: 1 1 260px; /* ✅ lets them wrap nicely */
+    }
+    .input::placeholder{color:rgba(255,255,255,.45)}
+    select{min-width:260px}
+    .btn{
+      padding:12px 14px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: linear-gradient(135deg, rgba(245,124,0,.95), rgba(255,193,7,.75));
+      color: rgba(15,15,16,.95);
+      font-weight:700;
+      cursor:pointer;
+      transition: transform .15s ease, filter .15s ease;
+      flex: 0 0 auto;
+    }
+    .btn:hover{transform: translateY(-1px); filter: brightness(1.05)}
+    .btn.secondary{
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.88);
+      font-weight:650;
+    }
+
+    /* Cabinet */
+    .grid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .person{
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      overflow:hidden;
+      box-shadow: 0 10px 22px rgba(0,0,0,.25);
+      position:relative;
+      min-width:0;
+    }
+    .person::before{
+      content:"";
+      position:absolute; left:0; top:0; right:0; height:4px;
+      background: linear-gradient(90deg, rgba(245,124,0,.9), rgba(255,193,7,.9));
+      opacity:.9;
+    }
+    .personHeader{
+      padding:16px 16px 10px;
+      display:flex; gap:12px; align-items:flex-start;
+    }
+    .avatar{
+      width:42px; height:42px; border-radius: 16px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      display:grid; place-items:center;
+      color: rgba(255,255,255,.88);
+      font-weight:800;
+      letter-spacing:.06em;
+      flex:0 0 auto;
+    }
+    .role{
+      margin:0;
+      font-size:13px;
+      color: rgba(255,255,255,.86);
+      font-weight:750;
+      line-height:1.2;
+    }
+    .name{
+      margin:6px 0 0;
+      font-size:14px;
+      color: rgba(255,255,255,.92);
+      font-weight:650;
+    }
+    .tagRow{
+      padding:0 16px 14px;
+      display:flex; flex-wrap:wrap; gap:8px;
+    }
+    .tag{
+      font-size:12px;
+      color: rgba(255,255,255,.78);
+      background: rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.10);
+      padding:7px 10px;
+      border-radius: 999px;
+    }
+
+    footer{
+      margin-top:28px;
+      padding:20px 0 40px;
+      color: rgba(255,255,255,.55);
+      font-size:12px;
+      border-top:1px solid rgba(255,255,255,.10);
+    }
+    .footerRow{
+      display:flex; gap:14px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+    }
+    .muted{color:rgba(255,255,255,.55)}
+    .sr{position:absolute; left:-9999px}
+
+    /* ✅ MOBILE FIRST: stronger adaptations */
+    @media (max-width: 980px){
+      .heroGrid{grid-template-columns:1fr}
+      .grid{grid-template-columns: repeat(2, 1fr)}
+      .brand{min-width: 0}
+      .headline{font-size:30px}
+    }
+
+    @media (max-width: 720px){
+      :root{ --pad: 16px; }
+      .topbar .wrap{padding:12px var(--pad)}
+      .brand h1{font-size:12px}
+      .brand p{font-size:11px}
+      .nav{gap:8px}
+      .chip{padding:8px 10px; font-size:11px}
+      .cardInner{padding:18px}
+      .quote{padding:12px 12px}
+      .grid{grid-template-columns:1fr} /* ✅ single column on phones */
+      .controls{gap:8px}
+      .btn{width:100%} /* ✅ buttons full width on phones */
+      .btn.secondary{width:100%}
+      select, .input{width:100%}
+    }
+
+    @media (max-width: 420px){
+      .seal{width:38px;height:38px;border-radius:13px}
+      .headline{font-size:26px}
+      .sub{font-size:13px}
+      .swatch{flex-direction:column; align-items:flex-start}
+      .swatch code{margin-top:8px}
+    }
+
+    /* ✅ Safer tap targets + reduced motion */
+    @media (pointer: coarse){
+      .chip, .btn{min-height:44px}
+    }
+    @media (prefers-reduced-motion: reduce){
+      .chip, .btn{transition:none}
+      .chip:hover, .btn:hover{transform:none}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar" role="banner">
+    <div class="wrap">
+      <div class="brand" aria-label="Identidad institucional">
+        <div class="seal" aria-hidden="true"></div>
+        <div>
+          <h1>Gobierno del Estado de San Luis Potosí</h1>
+          <p>Administración 2045–2051 · <strong>“San Luis Pa’ Delante”</strong></p>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Navegación">
+        <a class="chip" href="#inicio"><span class="dot" aria-hidden="true"></span><strong>Inicio</strong></a>
+        <a class="chip" href="#colores">Colores</a>
+        <a class="chip" href="#gabinete">Gabinete</a>
+        <a class="chip" href="#organismos">Organismos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap" id="inicio">
+    <div class="hero">
+      <div class="heroGrid">
+        <article class="card">
+          <div class="cardInner">
+            <div class="kicker"><span class="bar" aria-hidden="true"></span> Gobierno Estatal</div>
+            <h2 class="headline">San Luis Pa’ Delante</h2>
+            <p class="sub">
+              Continuidad con visión de futuro, movimiento y progreso con carácter.
+              Lenguaje cercano, rumbo firme y gobierno fuerte.
+            </p>
+
+            <div class="quote" role="note" aria-label="Lema del gobierno">
+              <div class="mark" aria-hidden="true">“”</div>
+              <div>
+                <b>Lema del Gobierno</b>
+                <p>
+                  <em>“San Luis Pa’ Delante”</em> expresa una visión de continuidad con transformación:
+                  un estado que no se detiene, que avanza con carácter, rumbo claro y compromiso social.
+                  Representa movimiento, progreso y una relación cercana entre gobierno y ciudadanía,
+                  sin perder firmeza institucional.
+                </p>
+              </div>
+            </div>
+
+            <div class="quote" role="note" aria-label="Titular del poder ejecutivo">
+              <div class="mark" aria-hidden="true">★</div>
+              <div>
+                <b>Gobernador Constitucional</b>
+                <p><strong>Lucas Isaiah Cárdenas Plasencia</strong></p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <aside class="card palette" id="colores" aria-label="Colores institucionales">
+          <div class="cardInner">
+            <div class="kicker"><span class="bar" aria-hidden="true"></span> Identidad</div>
+            <h2 class="headline" style="font-size:20px;margin-top:10px;">Colores institucionales</h2>
+            <p class="sub" style="font-size:13px;">Paleta oficial para comunicación y piezas institucionales.</p>
+
+            <div class="row">
+              <div class="swatch">
+                <div class="swatchLeft">
+                  <span class="colorBox" style="background:var(--orange)"></span>
+                  <div>
+                    <strong>Naranja institucional</strong>
+                    <small>Progreso, energía, decisión</small>
+                  </div>
+                </div>
+                <code>#F57C00</code>
+              </div>
+
+              <div class="swatch">
+                <div class="swatchLeft">
+                  <span class="colorBox" style="background:var(--yellow)"></span>
+                  <div>
+                    <strong>Amarillo acento</strong>
+                    <small>Optimismo, desarrollo, ciudadanía</small>
+                  </div>
+                </div>
+                <code>#FFC107</code>
+              </div>
+
+              <div class="swatch">
+                <div class="swatchLeft">
+                  <span class="colorBox" style="background:var(--graphite)"></span>
+                  <div>
+                    <strong>Negro grafito</strong>
+                    <small>Autoridad, sobriedad, gobierno fuerte</small>
+                  </div>
+                </div>
+                <code>#1E1E1E</code>
+              </div>
+
+              <div class="swatch">
+                <div class="swatchLeft">
+                  <span class="colorBox" style="background:var(--light);"></span>
+                  <div>
+                    <strong>Gris claro</strong>
+                    <small>Neutralidad institucional y legal</small>
+                  </div>
+                </div>
+                <code>#F4F4F4</code>
+              </div>
+            </div>
+
+            <div class="note">
+              <strong>Significado de la identidad cromática:</strong>
+              <ul>
+                <li><strong>Naranja institucional:</strong> simboliza progreso constante, energía social y un gobierno que avanza y toma decisiones.</li>
+                <li><strong>Amarillo acento:</strong> representa optimismo, crecimiento, cercanía con la ciudadanía y visión de futuro.</li>
+                <li><strong>Negro grafito:</strong> comunica autoridad, solidez institucional, respeto a la ley y firmeza en el ejercicio del poder.</li>
+                <li><strong>Gris claro:</strong> refleja neutralidad, equilibrio jurídico, institucionalidad y transparencia gubernamental.</li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <section id="gabinete" aria-label="Gabinete legal">
+      <div class="sectionTitle">
+        <div>
+          <h2>Gabinete Legal</h2>
+          <p>Dependencias y funciones clave de la Administración 2045–2051.</p>
+        </div>
+        <p class="muted" id="countLabel" aria-live="polite"></p>
+      </div>
+
+      <div class="controls" aria-label="Controles de búsqueda y filtro">
+        <label class="sr" for="q">Buscar</label>
+        <input class="input" id="q" type="search" placeholder="Buscar por nombre, cargo o función…" />
+        <label class="sr" for="filtro">Filtro</label>
+        <select id="filtro">
+          <option value="all">Todas las dependencias</option>
+          <option value="secretaria">Secretarías</option>
+          <option value="organismo">Organismos</option>
+        </select>
+        <button class="btn secondary" id="limpiar" type="button">Limpiar</button>
+      </div>
+
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <section id="organismos" aria-label="Organismos estatales">
+      <div class="sectionTitle">
+        <div>
+          <h2>Organismos Estatales</h2>
+          <p>Áreas estratégicas de atención social, deporte y juventud.</p>
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>Amar a San Luis</strong> (sustitución del DIF Estatal) se integra como organismo estatal con enfoque en atención integral a familias,
+        centros infantiles, adultos mayores y programas comunitarios.
+      </div>
+    </section>
+
+    <footer role="contentinfo">
+      <div class="footerRow">
+        <div>
+          <strong>Gobierno del Estado de San Luis Potosí</strong> · Administración 2045–2051<br/>
+          <span class="muted">Lema: “San Luis Pa’ Delante”</span>
+        </div>
+        <div class="muted">
+          Plantilla HTML institucional · Adaptada a móviles (responsive).
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    const data = [
+      { tipo: "secretaria", cargo: "Secretaría de Gobernación y Enlace Institucional", nombre: "Said Gabriel García Mendoza",
+        funciones: ["Política interior","Relación con poderes, municipios y federación","Gobernabilidad y crisis institucionales"] },
+      { tipo: "secretaria", cargo: "Secretaría de Seguridad Ciudadana Estatal", nombre: "Oscar Emmanuel Cerda Tello",
+        funciones: ["Fuerza Civil Estatal","Fuerza Civil Urbana","Fuerza Élite Estatal","Estrategia del Plan Cero Tolerancia"] },
+      { tipo: "secretaria", cargo: "Secretaría de Finanzas y Administración Pública", nombre: "Jorge Alonso Castañón",
+        funciones: ["Presupuesto estatal","Recaudación","Control del gasto y deuda","Modernización financiera"] },
+      { tipo: "secretaria", cargo: "Secretaría de Movilidad y Redes", nombre: "Ing. Luis Gael Cossio Almendárez",
+        funciones: ["Transporte público","Metro Potosí","Vialidad metropolitana","Conectividad urbana"] },
+      { tipo: "secretaria", cargo: "Secretaría de Obras Públicas e Infraestructura", nombre: "Arq. Citlali Constante",
+        funciones: ["Infraestructura estatal","Carreteras y obras estratégicas","Proyectos metropolitanos"] },
+      { tipo: "secretaria", cargo: "Secretaría de Desarrollo Rural y Recursos Hidráulicos", nombre: "Jesús Alberto Nava Argüelles",
+        funciones: ["Campo","Agua","Presas, riego y sustentabilidad rural"] },
+      { tipo: "secretaria", cargo: "Secretaría de Medio Ambiente y Sustentabilidad", nombre: "Héctor Iván Lozano Paredes",
+        funciones: ["Protección ambiental","Regulación turística sustentable","Conservación de ecosistemas"] },
+      { tipo: "secretaria", cargo: "Secretaría de Desarrollo Social y Bienestar", nombre: "Camila Campos Rodríguez",
+        funciones: ["Programas sociales","Atención a zonas vulnerables","Bienestar comunitario"] },
+      { tipo: "secretaria", cargo: "Secretaría de Educación Estatal", nombre: "Patricia Castillo Méndez",
+        funciones: ["Educación básica, media y superior","Infraestructura educativa","Calidad académica"] },
+      { tipo: "secretaria", cargo: "Secretaría de Cultura, Turismo y Patrimonio", nombre: "Edgar Saúl Martínez",
+        funciones: ["Cultura","Turismo","Patrimonio histórico"] },
+      { tipo: "secretaria", cargo: "Secretaría de Economía", nombre: "Aaron Barriga Álvarez",
+        funciones: ["Atracción de inversiones","Desarrollo industrial","Relación gobierno–empresa"] },
+      { tipo: "secretaria", cargo: "Secretaría de Salud Estatal", nombre: "Dr. Jesús Emiliano Mata Vega",
+        funciones: ["Sistema de salud estatal","Hospitales","Prevención y atención médica"] },
+      { tipo: "secretaria", cargo: "Secretaría de Ciencia, Innovación y Tecnología", nombre: "Santiago Galván Villagómez",
+        funciones: ["Investigación científica","Innovación tecnológica","Vinculación academia–industria"] },
+
+      { tipo: "organismo", cargo: "Amar a San Luis (Organismo Estatal)", nombre: "Camila Rodríguez Hernández",
+        funciones: ["Atención integral a familias","Centros infantiles","Adultos mayores","Programas comunitarios"] },
+      { tipo: "organismo", cargo: "Instituto Potosino del Deporte (INPODE)", nombre: "Jesús Ricardo Esquivel Delgado", funciones: [] },
+      { tipo: "organismo", cargo: "Instituto Potosino de la Juventud", nombre: "Denilson Córdova", funciones: [] }
+    ];
+
+    const gobernador = { tipo: "secretaria", cargo: "Gobernador Constitucional", nombre: "Lucas Isaiah Cárdenas Plasencia", funciones: [] };
+
+    const grid = document.getElementById("grid");
+    const q = document.getElementById("q");
+    const filtro = document.getElementById("filtro");
+    const limpiar = document.getElementById("limpiar");
+    const countLabel = document.getElementById("countLabel");
+
+    function initials(name){
+      const parts = name.replace(/\./g,"").split(" ").filter(Boolean);
+      const a = parts[0]?.[0] || "G";
+      const b = parts[parts.length-1]?.[0] || "S";
+      return (a + b).toUpperCase();
+    }
+
+    function escapeHtml(str){
+      return String(str)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+
+    function card(item){
+      const tags = (item.funciones || []).map(f => `<span class="tag">${escapeHtml(f)}</span>`).join("");
+      return `
+        <article class="person" data-tipo="${item.tipo}">
+          <div class="personHeader">
+            <div class="avatar" aria-hidden="true">${initials(item.nombre)}</div>
+            <div>
+              <p class="role">${escapeHtml(item.cargo)}</p>
+              <p class="name">${escapeHtml(item.nombre)}</p>
+            </div>
+          </div>
+          ${tags ? `<div class="tagRow">${tags}</div>` : `<div class="tagRow"><span class="tag">Titular</span></div>`}
+        </article>
+      `;
+    }
+
+    function render(){
+      const term = (q.value || "").trim().toLowerCase();
+      const f = filtro.value;
+
+      const combined = [gobernador, ...data];
+
+      const filtered = combined.filter(item => {
+        if (f !== "all" && item.tipo !== f) return false;
+        if (!term) return true;
+        const hay = [item.cargo, item.nombre, ...(item.funciones || [])].join(" ").toLowerCase();
+        return hay.includes(term);
+      });
+
+      grid.innerHTML = filtered.map(card).join("");
+      countLabel.textContent = `${filtered.length} resultado(s)`;
+    }
+
+    q.addEventListener("input", render);
+    filtro.addEventListener("change", render);
+    limpiar.addEventListener("click", () => {
+      q.value = "";
+      filtro.value = "all";
+      render();
+      q.focus();
+    });
+
+    render();
+  </script>
+</body>
+  </html>
