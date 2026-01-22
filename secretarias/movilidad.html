@@ -1,0 +1,1028 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Secretaría de Movilidad y Redes | Gobierno del Estado de San Luis Potosí</title>
+  <meta name="description" content="Sitio oficial de la Secretaría de Movilidad y Redes: transporte público, Metro Potosí, vialidad metropolitana, conectividad urbana, trámites y reportes." />
+
+  <style>
+    :root{
+      /* Identidad Gobierno */
+      --orange:#F57C00;
+      --yellow:#FFC107;
+      --graphite:#1E1E1E;
+      --light:#F4F4F4;
+
+      /* UI base */
+      --bg:#0f0f10;
+      --text:#f5f5f5;
+      --muted:#b7b7b7;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 10px 25px rgba(0,0,0,.35);
+
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1180px;
+      --pad: 24px;
+
+      /* Movilidad (acentos fríos/modernos sin cambiar identidad) */
+      --cyan: rgba(64, 224, 208, .95);
+      --cyan2: rgba(64, 224, 208, .18);
+      --blue: rgba(93, 173, 226, .95);
+      --blue2: rgba(93, 173, 226, .18);
+      --ok: rgba(72, 222, 152, .95);
+      --ok2: rgba(72, 222, 152, .18);
+      --warn: rgba(255, 193, 7, .95);
+      --warn2: rgba(255, 193, 7, .14);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: var(--bg);
+      color:var(--text);
+      line-height:1.35;
+      -webkit-text-size-adjust:100%;
+      text-size-adjust:100%;
+      position:relative;
+      overflow-x:hidden;
+    }
+
+    /* Glow controlado (sin mancha abajo) */
+    .bgGlow{
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+
+      background:
+        radial-gradient(900px 450px at 18% 8%, rgba(245,124,0,.12), transparent 60%),
+        radial-gradient(720px 420px at 82% 10%, rgba(64,224,208,.14), transparent 60%),
+        radial-gradient(700px 380px at 85% 18%, rgba(255,193,7,.09), transparent 55%);
+
+      -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 88%);
+      mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 88%);
+    }
+
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:var(--pad)}
+
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(to bottom, rgba(15,15,16,.86), rgba(15,15,16,.55));
+      border-bottom:1px solid var(--border);
+    }
+    .topbar .wrap{display:flex; align-items:center; gap:16px; padding:14px var(--pad)}
+
+    .brand{display:flex; align-items:center; gap:12px; min-width:260px}
+    .seal{
+      width:44px; height:44px; border-radius:14px;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,.22), transparent 55%),
+        linear-gradient(135deg, rgba(64,224,208,.95), rgba(245,124,0,.85));
+      box-shadow: 0 10px 25px rgba(64,224,208,.14);
+      border:1px solid rgba(255,255,255,.18);
+      position:relative;
+      overflow:hidden;
+      flex:0 0 auto;
+    }
+    .seal:after{
+      content:"";
+      position:absolute; inset:-40% -40%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), transparent 60%);
+      transform: rotate(25deg);
+    }
+    .brand h1{
+      font-size:13px; margin:0;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.85);
+    }
+    .brand p{margin:2px 0 0; font-size:12px; color:var(--muted)}
+
+    .nav{
+      margin-left:auto;
+      display:flex; gap:10px; align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color:rgba(255,255,255,.9);
+      font-size:12px;
+      text-decoration:none;
+      cursor:pointer;
+      user-select:none;
+      transition:transform .15s ease, background .15s ease, border-color .15s ease;
+      white-space:nowrap;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .chip:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.18)}
+    .chip strong{font-weight:650}
+    .dot{width:8px;height:8px;border-radius:99px;background:var(--orange); box-shadow:0 0 0 3px rgba(245,124,0,.15)}
+
+    /* Hero */
+    .hero{padding:26px 0 10px}
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid var(--border);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      min-width:0;
+    }
+    .cardInner{padding:22px}
+    .kicker{
+      display:flex; align-items:center; gap:10px;
+      font-size:12px; color:rgba(255,255,255,.82);
+      letter-spacing:.12em; text-transform:uppercase;
+    }
+    .kicker .bar{width:22px;height:10px;border-radius:999px;background:linear-gradient(90deg,var(--orange),rgba(64,224,208,.9))}
+    .headline{
+      margin:10px 0 0;
+      font-size:30px;
+      letter-spacing:-.02em;
+      line-height:1.05;
+    }
+    .sub{margin:10px 0 0; color:rgba(255,255,255,.78); font-size:14px; max-width:62ch}
+
+    /* Quick actions */
+    .ctaRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+    .btn{
+      padding:12px 14px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: linear-gradient(135deg, rgba(245,124,0,.95), rgba(255,193,7,.75));
+      color: rgba(15,15,16,.95);
+      font-weight:900;
+      cursor:pointer;
+      transition: transform .15s ease, filter .15s ease;
+      flex: 0 0 auto;
+      text-decoration:none;
+      -webkit-tap-highlight-color: transparent;
+      display:inline-flex; align-items:center; gap:10px;
+    }
+    .btn:hover{transform: translateY(-1px); filter: brightness(1.05)}
+    .btn.secondary{
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.92);
+      font-weight:750;
+    }
+    .btn.cyan{
+      background: linear-gradient(135deg, rgba(64,224,208,.95), rgba(93,173,226,.70));
+      color: rgba(15,15,16,.95);
+    }
+    .pill{
+      font-size:11px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.15);
+      background: rgba(255,255,255,.35);
+      color: rgba(0,0,0,.85);
+      font-weight:950;
+      white-space:nowrap;
+    }
+
+    .miniGrid{display:grid; grid-template-columns:1fr; gap:12px; margin-top:14px}
+    .mini{
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      padding:12px 14px;
+      min-width:0;
+    }
+    .mini strong{display:block; margin:0 0 6px; font-size:13px}
+    .mini p{margin:0; color:rgba(255,255,255,.74); font-size:13px}
+    .mini .row{margin-top:10px; display:flex; gap:10px; flex-wrap:wrap}
+    .chip2{
+      font-size:12px;
+      color: rgba(255,255,255,.82);
+      background: rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.10);
+      padding:8px 10px;
+      border-radius: 999px;
+      text-decoration:none;
+      display:inline-flex; align-items:center; gap:8px;
+    }
+
+    section{padding:18px 0}
+    .sectionTitle{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:14px;
+      margin-top:18px;
+      flex-wrap:wrap;
+    }
+    .sectionTitle h2{margin:0; font-size:18px; letter-spacing:.02em}
+    .sectionTitle p{margin:0; color:var(--muted); font-size:13px}
+
+    /* Content blocks */
+    .grid3{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .grid2{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:14px;
+    }
+    .block{
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      box-shadow: 0 10px 22px rgba(0,0,0,.22);
+      overflow:hidden;
+      min-width:0;
+      position:relative;
+    }
+    .block::before{
+      content:"";
+      position:absolute; left:0; top:0; right:0; height:4px;
+      background: linear-gradient(90deg, rgba(64,224,208,.9), rgba(245,124,0,.85));
+      opacity:.95;
+    }
+    .blockInner{padding:16px 16px}
+    .block h3{margin:0; font-size:14px; letter-spacing:.01em}
+    .block p{margin:8px 0 0; color:rgba(255,255,255,.74); font-size:13px}
+    .tags{margin-top:10px; display:flex; gap:8px; flex-wrap:wrap}
+    .tag{
+      font-size:12px;
+      color: rgba(255,255,255,.78);
+      background: rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.10);
+      padding:7px 10px;
+      border-radius: 999px;
+      white-space:nowrap;
+    }
+
+    /* Forms */
+    .form{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    .input, select, textarea{
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.92);
+      padding:12px 12px;
+      border-radius: 14px;
+      outline:none;
+      width:100%;
+      font-family:inherit;
+    }
+    textarea{min-height:120px; resize:vertical}
+    .help{margin-top:10px; color:rgba(255,255,255,.60); font-size:12px; line-height:1.5}
+
+    /* Tables */
+    .tableWrap{
+      margin-top:16px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 18px;
+      overflow:hidden;
+      background: rgba(255,255,255,.03);
+    }
+    table{width:100%; border-collapse:collapse}
+    th,td{
+      padding:12px 12px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      text-align:left;
+      font-size:13px;
+      vertical-align:top;
+    }
+    th{color:rgba(255,255,255,.88); background: rgba(0,0,0,.18); font-weight:900}
+    td{color:rgba(255,255,255,.74)}
+    tr:last-child td{border-bottom:none}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace}
+
+    footer{
+      margin-top:28px;
+      padding:20px 0 40px;
+      color: rgba(255,255,255,.55);
+      font-size:12px;
+      border-top:1px solid rgba(255,255,255,.10);
+    }
+    .footerRow{display:flex; gap:14px; flex-wrap:wrap; align-items:center; justify-content:space-between}
+    .muted{color:rgba(255,255,255,.55)}
+    .sr{position:absolute; left:-9999px}
+
+    /* Toast */
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:18px;
+      transform:translateX(-50%);
+      background: rgba(20,20,22,.92);
+      border: 1px solid rgba(255,255,255,.14);
+      color: rgba(255,255,255,.92);
+      padding:10px 12px;
+      border-radius: 14px;
+      box-shadow: 0 10px 22px rgba(0,0,0,.35);
+      font-size:12px;
+      opacity:0;
+      pointer-events:none;
+      transition: opacity .18s ease, transform .18s ease;
+      z-index:9999;
+      max-width:min(560px, calc(100vw - 24px));
+      text-align:center;
+    }
+    .toast.show{
+      opacity:1;
+      transform:translateX(-50%) translateY(-2px);
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .heroGrid{grid-template-columns:1fr}
+      .grid3{grid-template-columns: repeat(2, 1fr)}
+      .grid2{grid-template-columns:1fr}
+      .form{grid-template-columns:1fr}
+    }
+    @media (max-width: 720px){
+      :root{ --pad: 16px; }
+      .topbar .wrap{padding:12px var(--pad)}
+      .brand{min-width:0}
+      .brand h1{font-size:12px}
+      .brand p{font-size:11px}
+      .nav{gap:8px}
+      .chip{padding:8px 10px; font-size:11px}
+      .cardInner{padding:18px}
+      .headline{font-size:26px}
+      .grid3{grid-template-columns:1fr}
+      .btn{width:100%; justify-content:space-between}
+    }
+    @media (pointer: coarse){
+      .chip, .btn, .input, select, textarea{min-height:44px}
+    }
+    @media (prefers-reduced-motion: reduce){
+      .chip, .btn{transition:none}
+      .chip:hover, .btn:hover{transform:none}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bgGlow" aria-hidden="true"></div>
+
+  <header class="topbar" role="banner">
+    <div class="wrap">
+      <div class="brand" aria-label="Identidad institucional">
+        <div class="seal" aria-hidden="true"></div>
+        <div>
+          <h1>Secretaría de Movilidad y Redes</h1>
+          <p>Gobierno del Estado de San Luis Potosí · Administración 2045–2051</p>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Navegación">
+        <a class="chip" href="#inicio"><span class="dot" aria-hidden="true"></span><strong>Inicio</strong></a>
+        <a class="chip" href="#servicios">Servicios</a>
+        <a class="chip" href="#metro">Metro Potosí</a>
+        <a class="chip" href="#vialidad">Vialidad</a>
+        <a class="chip" href="#datos">Datos</a>
+        <a class="chip" href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap" id="inicio">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="heroGrid">
+        <article class="card">
+          <div class="cardInner">
+            <div class="kicker"><span class="bar" aria-hidden="true"></span> Transporte · Conectividad · Ciudad</div>
+            <h2 class="headline">Movilidad eficiente y conectada para la zona metropolitana</h2>
+            <p class="sub">
+              La Secretaría planea, regula y moderniza el <strong>transporte público</strong>, impulsa el <strong>Metro Potosí</strong>,
+              coordina <strong>vialidad metropolitana</strong> y fortalece la <strong>conectividad urbana</strong> para tiempos de traslado más cortos
+              y una ciudad más segura y productiva.
+            </p>
+
+            <div class="ctaRow">
+              <a class="btn cyan" href="#tramites">Trámites <span class="pill">Rápido</span></a>
+              <a class="btn" href="#reporte">Reporte vial <span class="pill">Web</span></a>
+              <a class="btn secondary" href="#metro">Ver Metro Potosí <span class="pill">Plan</span></a>
+            </div>
+
+            <p class="help">
+              Esta página es un formato institucional. Sustituye enlaces y datos (horarios, direcciones, mapas) por los oficiales cuando los tengas.
+            </p>
+          </div>
+        </article>
+
+        <!-- Side card -->
+        <aside class="card">
+          <div class="cardInner">
+            <div class="kicker"><span class="bar" aria-hidden="true"></span> Directorio</div>
+            <h2 class="headline" style="font-size:18px;margin-top:10px;">Contacto rápido</h2>
+            <p class="sub" style="font-size:13px;">Vías oficiales y orientación ciudadana.</p>
+
+            <div class="miniGrid">
+              <div class="mini">
+                <strong>Titular de la Secretaría</strong>
+                <p><b>Ing. Luis Gael Cossio Almendárez</b></p>
+                <div class="row">
+                  <a class="chip2" href="#atribuciones">Atribuciones</a>
+                  <a class="chip2" href="#programas">Programas</a>
+                </div>
+              </div>
+
+              <div class="mini">
+                <strong>Atención Ciudadana</strong>
+                <p>Orientación y seguimiento de reportes.</p>
+                <div class="row">
+                  <a class="chip2" href="mailto:atencion.movilidad@slp.gob.mx">Correo</a>
+                  <a class="chip2" href="#contacto">Formulario</a>
+                </div>
+                <p class="help">*Cambia el correo por el oficial real.</p>
+              </div>
+
+              <div class="mini">
+                <strong>Estado del servicio</strong>
+                <p>Alertas y avisos de rutas/obras.</p>
+                <div class="row">
+                  <a class="chip2" href="#avisos">Avisos</a>
+                  <a class="chip2" href="#datos">Indicadores</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ATRIBUCIONES -->
+    <section id="atribuciones" aria-label="Atribuciones">
+      <div class="sectionTitle">
+        <div>
+          <h2>Atribuciones</h2>
+          <p>Áreas clave de intervención de la Secretaría.</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="block">
+          <div class="blockInner">
+            <h3>Transporte público</h3>
+            <p>Planeación, regulación, modernización de rutas, calidad del servicio y accesibilidad.</p>
+            <div class="tags">
+              <span class="tag">Rutas</span>
+              <span class="tag">Tarifa</span>
+              <span class="tag">Calidad</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="blockInner">
+            <h3>Metro Potosí</h3>
+            <p>Integración multimodal, estaciones, alimentación, seguridad y operación por fases.</p>
+            <div class="tags">
+              <span class="tag">Intermodal</span>
+              <span class="tag">Fases</span>
+              <span class="tag">Estaciones</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block" id="vialidad">
+          <div class="blockInner">
+            <h3>Vialidad metropolitana</h3>
+            <p>Gestión de tráfico, seguridad vial, obras de impacto vial y coordinación con municipios.</p>
+            <div class="tags">
+              <span class="tag">Semaforización</span>
+              <span class="tag">Seguridad vial</span>
+              <span class="tag">Coordinación</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="block">
+          <div class="blockInner">
+            <h3>Conectividad urbana</h3>
+            <p>Redes, información al usuario, movilidad inteligente y señalización para una ciudad conectada.</p>
+            <div class="tags">
+              <span class="tag">Smart city</span>
+              <span class="tag">Señalización</span>
+              <span class="tag">Datos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="blockInner">
+            <h3>Movilidad activa</h3>
+            <p>Infraestructura peatonal/ciclista, seguridad de cruces y conectividad de barrios.</p>
+            <div class="tags">
+              <span class="tag">Bici</span>
+              <span class="tag">Peatón</span>
+              <span class="tag">Accesibilidad</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="blockInner">
+            <h3>Gestión de incidentes</h3>
+            <p>Atención y canalización de reportes viales, cierres, obras y reordenamientos.</p>
+            <div class="tags">
+              <span class="tag">Reportes</span>
+              <span class="tag">Cierres</span>
+              <span class="tag">Obras</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS / TRÁMITES -->
+    <section id="servicios" aria-label="Servicios">
+      <div class="sectionTitle">
+        <div>
+          <h2>Servicios y trámites</h2>
+          <p>Lo más usado por la ciudadanía (plantilla).</p>
+        </div>
+      </div>
+
+      <div class="grid3" id="tramites">
+        <div class="block">
+          <div class="blockInner">
+            <h3>Consulta de rutas y paradas</h3>
+            <p>Mapa de rutas, horarios, paraderos y cambios temporales.</p>
+            <div class="tags">
+              <span class="tag">Mapa</span>
+              <span class="tag">Horarios</span>
+            </div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="blockInner">
+            <h3>Tarjeta de movilidad</h3>
+            <p>Alta, reposición, saldo y puntos de recarga (si aplica).</p>
+            <div class="tags">
+              <span class="tag">Tarjeta</span>
+              <span class="tag">Recarga</span>
+            </div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="blockInner">
+            <h3>Permisos y señalización</h3>
+            <p>Solicitudes por obras, cierres, eventos y señalización temporal.</p>
+            <div class="tags">
+              <span class="tag">Permisos</span>
+              <span class="tag">Eventos</span>
+              <span class="tag">Obras</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="blockInner">
+            <h3>Educación vial</h3>
+            <p>Campañas, materiales y programas de seguridad vial.</p>
+            <div class="tags">
+              <span class="tag">Prevención</span>
+              <span class="tag">Cultura vial</span>
+            </div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="blockInner">
+            <h3>Atención a concesionarios</h3>
+            <p>Lineamientos, cumplimiento, modernización y verificación.</p>
+            <div class="tags">
+              <span class="tag">Concesiones</span>
+              <span class="tag">Verificación</span>
+            </div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="blockInner">
+            <h3>Quejas del servicio</h3>
+            <p>Reportes por mal servicio, unidades, horarios o conductas.</p>
+            <div class="tags">
+              <span class="tag">Queja</span>
+              <span class="tag">Seguimiento</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tableWrap" aria-label="Directorio rápido (placeholders)">
+        <table>
+          <thead>
+            <tr>
+              <th>Área</th>
+              <th>Servicio</th>
+              <th>Canal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Transporte</strong></td>
+              <td>Rutas, horarios, cambios</td>
+              <td><a class="mono" href="#">/rutas</a></td>
+            </tr>
+            <tr>
+              <td><strong>Movilidad inteligente</strong></td>
+              <td>Alertas, cierres, obras</td>
+              <td><a class="mono" href="#">/avisos</a></td>
+            </tr>
+            <tr>
+              <td><strong>Trámites</strong></td>
+              <td>Permisos, señalización, eventos</td>
+              <td><a class="mono" href="#">/tramites</a></td>
+            </tr>
+            <tr>
+              <td><strong>Atención</strong></td>
+              <td>Quejas, sugerencias, reportes</td>
+              <td><a class="mono" href="#contacto">Formulario</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- METRO POTOSÍ -->
+    <section id="metro" aria-label="Metro Potosí">
+      <div class="sectionTitle">
+        <div>
+          <h2>Metro Potosí</h2>
+          <p>Integración multimodal y fases del proyecto (plantilla).</p>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="block">
+          <div class="blockInner">
+            <h3>Objetivos del sistema</h3>
+            <p>Reducir tiempos de traslado, integrar alimentadoras, mejorar seguridad y confiabilidad.</p>
+            <div class="tags">
+              <span class="tag">Tiempo</span>
+              <span class="tag">Intermodal</span>
+              <span class="tag">Seguridad</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="blockInner">
+            <h3>Alimentadoras y conexiones</h3>
+            <p>Rutas de acercamiento, bici/peatón, estacionamientos, integración tarifaria.</p>
+            <div class="tags">
+              <span class="tag">Alimentadoras</span>
+              <span class="tag">Bici</span>
+              <span class="tag">Tarifa integrada</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="block">
+          <div class="blockInner">
+            <h3>Fase 1</h3>
+            <p>Corredor prioritario con mayor demanda y estaciones estratégicas.</p>
+            <div class="tags">
+              <span class="tag">Demanda alta</span>
+              <span class="tag">Estaciones</span>
+            </div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="blockInner">
+            <h3>Fase 2</h3>
+            <p>Extensión a zonas de crecimiento, conexión con nodos metropolitanos.</p>
+            <div class="tags">
+              <span class="tag">Expansión</span>
+              <span class="tag">Nodos</span>
+            </div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="blockInner">
+            <h3>Fase 3</h3>
+            <p>Consolidación de red, mejoras operativas y optimización de frecuencias.</p>
+            <div class="tags">
+              <span class="tag">Red</span>
+              <span class="tag">Frecuencias</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="help">
+        Sugerencia: aquí puedes integrar un mapa real (SVG/Leaflet) y un tablero de estado del servicio por línea/estación.
+      </p>
+    </section>
+
+    <!-- AVISOS / REPORTES VIALES -->
+    <section id="avisos" aria-label="Avisos y reportes">
+      <div class="sectionTitle">
+        <div>
+          <h2>Avisos viales y reportes</h2>
+          <p>Canal para incidencias no urgentes (demostrativo).</p>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="block">
+          <div class="blockInner">
+            <h3>Avisos activos</h3>
+            <p>Obras, cierres, desvíos, cambios de ruta y recomendaciones.</p>
+            <div class="tags">
+              <span class="tag">Obras</span>
+              <span class="tag">Desvíos</span>
+              <span class="tag">Alertas</span>
+            </div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="blockInner">
+            <h3>Prioridades de seguridad vial</h3>
+            <p>Intersecciones críticas, cruces escolares, velocidad y señalización.</p>
+            <div class="tags">
+              <span class="tag">Cruces</span>
+              <span class="tag">Velocidad</span>
+              <span class="tag">Señalización</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="reporte">
+        <div class="cardInner">
+          <div class="kicker"><span class="bar" aria-hidden="true"></span> Reporte vial</div>
+          <p class="sub" style="font-size:13px;margin-top:8px;">
+            Reporta baches, semáforos apagados, señalización dañada, cierres no informados o incidentes de transporte (no urgentes).
+          </p>
+
+          <form class="form" id="formReporte">
+            <select name="tipo" required>
+              <option value="">Tipo de reporte (elige uno)</option>
+              <option>Bache / daño en vialidad</option>
+              <option>Semáforo apagado</option>
+              <option>Señalización dañada</option>
+              <option>Cierre / obra no señalizada</option>
+              <option>Problema en ruta de transporte</option>
+              <option>Accesibilidad (rampa, banqueta)</option>
+              <option>Otro</option>
+            </select>
+
+            <select name="zona" required>
+              <option value="">Zona (elige una)</option>
+              <option>San Luis Potosí</option>
+              <option>Soledad de Graciano Sánchez</option>
+              <option>Zona industrial</option>
+              <option>Periférico</option>
+              <option>Otro</option>
+            </select>
+
+            <input class="input" name="referencia" placeholder="Referencia / ubicación aproximada" required />
+            <input class="input" name="contacto" placeholder="Teléfono o correo (opcional)" />
+
+            <textarea name="detalle" placeholder="Describe el problema (qué, dónde, desde cuándo). Si aplica, indica sentido de circulación." required></textarea>
+
+            <div style="grid-column:1/-1; display:flex; gap:10px; flex-wrap:wrap; margin-top:2px;">
+              <button class="btn cyan" type="submit">Enviar reporte <span class="pill">OK</span></button>
+              <button class="btn secondary" type="reset">Limpiar</button>
+              <a class="btn" href="#contacto">Contacto <span class="pill">Ayuda</span></a>
+            </div>
+          </form>
+
+          <p class="help">
+            Este formulario es demostrativo. Para producción, conéctalo a un sistema oficial que genere folio, adjuntos (foto) y seguimiento.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DATOS -->
+    <section id="datos" aria-label="Datos e indicadores">
+      <div class="sectionTitle">
+        <div>
+          <h2>Datos e indicadores</h2>
+          <p>Transparencia operativa y medición de desempeño (plantilla).</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="block">
+          <div class="blockInner">
+            <h3>Tiempo promedio de traslado</h3>
+            <p>Medición por corredor y hora; objetivo: reducir tiempos y variabilidad.</p>
+            <div class="tags">
+              <span class="tag">Tiempo</span>
+              <span class="tag">Corredores</span>
+            </div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="blockInner">
+            <h3>Frecuencia y puntualidad</h3>
+            <p>Indicadores de regularidad del transporte y cumplimiento de horarios.</p>
+            <div class="tags">
+              <span class="tag">Frecuencia</span>
+              <span class="tag">Puntualidad</span>
+            </div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="blockInner">
+            <h3>Seguridad vial</h3>
+            <p>Accidentes, puntos críticos, acciones correctivas y campañas.</p>
+            <div class="tags">
+              <span class="tag">Siniestros</span>
+              <span class="tag">Puntos críticos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tableWrap" aria-label="Enlaces de datos (placeholders)">
+        <table>
+          <thead>
+            <tr>
+              <th>Sección</th>
+              <th>Contenido</th>
+              <th>Enlace</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Indicadores</strong></td>
+              <td>Tablero mensual por corredor/ruta.</td>
+              <td><a href="#" class="mono">/indicadores</a></td>
+            </tr>
+            <tr>
+              <td><strong>Avisos</strong></td>
+              <td>Obras, cierres, desvíos y cambios de ruta.</td>
+              <td><a href="#" class="mono">/avisos</a></td>
+            </tr>
+            <tr>
+              <td><strong>Transparencia</strong></td>
+              <td>Obligaciones, normatividad y documentos.</td>
+              <td><a href="#" class="mono">/transparencia</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="help">
+        Nota: los datos deben publicarse con metodología clara y sin información personal.
+      </p>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" aria-label="Contacto">
+      <div class="sectionTitle">
+        <div>
+          <h2>Contacto y atención ciudadana</h2>
+          <p>Canales oficiales y orientación.</p>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="block">
+          <div class="blockInner">
+            <h3>Ventanilla</h3>
+            <p>
+              Dirección: <span class="muted">[Agregar dirección oficial]</span><br/>
+              Horario: <span class="muted">[Lun–Vie 9:00–15:00]</span>
+            </p>
+            <div class="tags">
+              <span class="tag">Atención</span>
+              <span class="tag">Trámites</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="blockInner">
+            <h3>Canales digitales</h3>
+            <p>
+              Correo: <a href="mailto:atencion.movilidad@slp.gob.mx" class="mono">atencion.movilidad@slp.gob.mx</a><br/>
+              Teléfono: <span class="muted mono">[Agregar teléfono]</span>
+            </p>
+            <div class="tags">
+              <span class="tag">Seguimiento</span>
+              <span class="tag">Reportes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:14px;">
+        <div class="cardInner">
+          <div class="kicker"><span class="bar" aria-hidden="true"></span> Mensaje</div>
+          <p class="sub" style="font-size:13px;margin-top:8px;">
+            Para dudas generales, sugerencias o solicitudes (no urgentes).
+          </p>
+
+          <form class="form" id="formContacto">
+            <input class="input" name="nombre" placeholder="Nombre" autocomplete="name" required />
+            <input class="input" name="correo" placeholder="Correo" inputmode="email" autocomplete="email" required />
+            <select name="asunto" required>
+              <option value="">Asunto (elige uno)</option>
+              <option>Consulta de rutas</option>
+              <option>Queja de transporte</option>
+              <option>Permisos / señalización</option>
+              <option>Obras y cierres</option>
+              <option>Transparencia / información</option>
+              <option>Otro</option>
+            </select>
+            <input class="input" name="telefono" placeholder="Teléfono (opcional)" inputmode="tel" />
+            <textarea name="mensaje" placeholder="Escribe tu mensaje…" required></textarea>
+
+            <div style="grid-column:1/-1; display:flex; gap:10px; flex-wrap:wrap; margin-top:2px;">
+              <button class="btn secondary" type="submit">Enviar mensaje</button>
+              <a class="btn cyan" href="#reporte">Reporte vial <span class="pill">Web</span></a>
+              <a class="btn" href="#servicios">Servicios <span class="pill">Info</span></a>
+            </div>
+          </form>
+
+          <p class="help">
+            Este formulario es demostrativo. Para uso real, conéctalo a un sistema oficial de folios y respuesta.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer role="contentinfo">
+      <div class="footerRow">
+        <div>
+          <strong>Secretaría de Movilidad y Redes</strong> · Gobierno del Estado de San Luis Potosí<br/>
+          <span class="muted">Administración 2045–2051 · Titular: Ing. Luis Gael Cossio Almendárez</span>
+        </div>
+        <div class="muted">
+          Plantilla HTML institucional · Movilidad (responsive).
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" aria-live="polite"></div>
+
+  <script>
+    const toast = document.getElementById("toast");
+    let toastTimer = null;
+
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 1500);
+    }
+
+    // Formularios (demo)
+    document.getElementById("formReporte").addEventListener("submit", (e) => {
+      e.preventDefault();
+      showToast("Reporte enviado (demo). Integra a un sistema oficial para folio y seguimiento.");
+      e.target.reset();
+    });
+
+    document.getElementById("formContacto").addEventListener("submit", (e) => {
+      e.preventDefault();
+      showToast("Mensaje enviado (demo). Integra a un sistema oficial para respuesta.");
+      e.target.reset();
+    });
+
+    // Scroll suave
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href");
+        if(!id || id === "#") return;
+        const el = document.querySelector(id);
+        if(!el) return;
+        e.preventDefault();
+        el.scrollIntoView({behavior:"smooth", block:"start"});
+      });
+    });
+  </script>
+</body>
+</html>
