@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gobernador Lucas Isaiah Cárdenas Plasencia | Gobierno del Estado de San Luis Potosí</title>
+  <meta name="description" content="Página oficial del Gobernador Lucas Isaiah Cárdenas Plasencia. Visión, ejes de gobierno, agenda, comunicados y contacto." />
+
+  <style>
+    :root{
+      --orange:#F57C00;
+      --yellow:#FFC107;
+      --graphite:#1E1E1E;
+      --light:#F4F4F4;
+
+      --bg:#0f0f10;
+      --text:#f5f5f5;
+      --muted:#b7b7b7;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 10px 25px rgba(0,0,0,.35);
+
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1180px;
+      --pad: 24px;
+
+      /* Acento sobrio */
+      --blue: rgba(93,173,226,.95);
+      --blue2: rgba(93,173,226,.18);
+      --ok: rgba(72,222,152,.95);
+      --ok2: rgba(72,222,152,.18);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: var(--bg);
+      color:var(--text);
+      line-height:1.35;
+      -webkit-text-size-adjust:100%;
+      text-size-adjust:100%;
+      position:relative;
+      overflow-x:hidden;
+    }
+
+    /* Glow controlado */
+    .bgGlow{
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+
+      background:
+        radial-gradient(900px 450px at 20% 10%, rgba(245,124,0,.16), transparent 60%),
+        radial-gradient(760px 420px at 82% 10%, rgba(93,173,226,.12), transparent 60%),
+        radial-gradient(700px 380px at 85% 18%, rgba(255,193,7,.10), transparent 55%);
+
+      -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 88%);
+      mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 88%);
+    }
+
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:var(--pad)}
+
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(to bottom, rgba(15,15,16,.86), rgba(15,15,16,.55));
+      border-bottom:1px solid var(--border);
+    }
+    .topbar .wrap{display:flex; align-items:center; gap:16px; padding:14px var(--pad)}
+
+    .brand{display:flex; align-items:center; gap:12px; min-width:260px}
+    .seal{
+      width:44px; height:44px; border-radius:14px;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,.22), transparent 55%),
+        linear-gradient(135deg, rgba(245,124,0,.95), rgba(255,193,7,.85));
+      box-shadow: 0 10px 25px rgba(245,124,0,.18);
+      border:1px solid rgba(255,255,255,.18);
+      position:relative;
+      overflow:hidden;
+      flex:0 0 auto;
+    }
+    .seal:after{
+      content:"";
+      position:absolute; inset:-40% -40%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), transparent 60%);
+      transform: rotate(25deg);
+    }
+    .brand h1{
+      font-size:13px; margin:0;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.85);
+    }
+    .brand p{margin:2px 0 0; font-size:12px; color:var(--muted)}
+
+    .nav{
+      margin-left:auto;
+      display:flex; gap:10px; align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color:rgba(255,255,255,.9);
+      font-size:12px;
+      text-decoration:none;
+      cursor:pointer;
+      user-select:none;
+      transition:transform .15s ease, background .15s ease, border-color .15s ease;
+      white-space:nowrap;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .chip:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.18)}
+    .chip strong{font-weight:650}
+    .dot{width:8px;height:8px;border-radius:99px;background:var(--orange); box-shadow:0 0 0 3px rgba(245,124,0,.15)}
+
+    /* Hero */
+    .hero{padding:26px 0 10px}
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid var(--border);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      min-width:0;
+    }
+    .cardInner{padding:22px}
+    .kicker{
+      display:flex; align-items:center; gap:10px;
+      font-size:12px; color:rgba(255,255,255,.82);
+      letter-spacing:.12em; text-transform:uppercase;
+    }
+    .kicker .bar{width:22px;height:10px;border-radius:999px;background:linear-gradient(90deg,var(--orange),rgba(93,173,226,.9))}
+    .headline{
+      margin:10px 0 0;
+      font-size:30px;
+      letter-spacing:-.02em;
+      line-height:1.05;
+    }
+    .sub{margin:10px 0 0; color:rgba(255,255,255,.78); font-size:14px; max-width:62ch}
+
+    .profile{
+      display:flex; gap:14px; align-items:flex-start;
+      margin-top:14px;
+      padding:14px 14px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.22);
+    }
+    .avatar{
+      width:64px;height:64px;border-radius:22px;
+      border:1px solid rgba(255,255,255,.14);
+      background:
+        radial-gradient(circle at 25% 20%, rgba(255,255,255,.20), transparent 55%),
+        linear-gradient(135deg, rgba(93,173,226,.55), rgba(245,124,0,.65));
+      box-shadow: 0 12px 28px rgba(0,0,0,.35);
+      flex:0 0 auto;
+      position:relative;
+      overflow:hidden;
+    }
+    .avatar:after{
+      content:"";
+      position:absolute; inset:-40% -40%;
+      background: radial-gradient(circle at 35% 35%, rgba(255,255,255,.35), transparent 60%);
+      transform: rotate(20deg);
+    }
+    .profile b{display:block; font-size:13px}
+    .meta{margin-top:6px; color:rgba(255,255,255,.74); font-size:13px; line-height:1.5}
+    .meta .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace}
+
+    .ctaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .btn{
+      padding:12px 14px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: linear-gradient(135deg, rgba(245,124,0,.95), rgba(255,193,7,.75));
+      color: rgba(15,15,16,.95);
+      font-weight:900;
+      cursor:pointer;
+      transition: transform .15s ease, filter .15s ease;
+      text-decoration:none;
+      display:inline-flex; align-items:center; gap:10px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn:hover{transform: translateY(-1px); filter: brightness(1.05)}
+    .btn.secondary{
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.92);
+      font-weight:750;
+    }
+    .btn.blue{
+      background: linear-gradient(135deg, rgba(93,173,226,.95), rgba(72,222,152,.70));
+      color: rgba(15,15,16,.95);
+    }
+    .pill{
+      font-size:11px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.15);
+      background: rgba(255,255,255,.35);
+      color: rgba(0,0,0,.85);
+      font-weight:950;
+      white-space:nowrap;
+    }
+
+    section{padding:18px 0}
+    .sectionTitle{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:14px;
+      margin-top:18px;
+      flex-wrap:wrap;
+    }
+    .sectionTitle h2{margin:0; font-size:18px; letter-spacing:.02em}
+    .sectionTitle p{margin:0; color:var(--muted); font-size:13px}
+
+    .grid3{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .grid2{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:14px;
+    }
+
+    .block{
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      box-shadow: 0 10px 22px rgba(0,0,0,.22);
+      overflow:hidden;
+      min-width:0;
+      position:relative;
+    }
+    .block::before{
+      content:"";
+      position:absolute; left:0; top:0; right:0; height:4px;
+      background: linear-gradient(90deg, rgba(93,173,226,.9), rgba(245,124,0,.85));
+      opacity:.95;
+    }
+    .blockInner{padding:16px 16px}
+    .block h3{margin:0; font-size:14px; letter-spacing:.01em}
+    .block p{margin:8px 0 0; color:rgba(255,255,255,.74); font-size:13px}
+    .tags{margin-top:10px; display:flex; gap:8px; flex-wrap:wrap}
+    .tag{
+      font-size:12px;
+      color: rgba(255,255,255,.78);
+      background: rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.10);
+      padding:7px 10px;
+      border-radius: 999px;
+      white-space:nowrap;
+    }
+
+    .tableWrap{
+      margin-top:16px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 18px;
+      overflow:hidden;
+      background: rgba(255,255,255,.03);
+    }
+    table{width:100%; border-collapse:collapse}
+    th,td{
+      padding:12px 12px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      text-align:left;
+      font-size:13px;
+      vertical-align:top;
+    }
+    th{color:rgba(255,255,255,.88); background: rgba(0,0,0,.18); font-weight:900}
+    td{color:rgba(255,255,255,.74)}
+    tr:last-child td{border-bottom:none}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace}
+
+    .form{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    .input, select, textarea{
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.92);
+      padding:12px 12px;
+      border-radius: 14px;
+      outline:none;
+      width:100%;
+      font-family:inherit;
+    }
+    textarea{min-height:120px; resize:vertical}
+    .help{margin-top:10px; color:rgba(255,255,255,.60); font-size:12px; line-height:1.5}
+
+    footer{
+      margin-top:28px;
+      padding:20px 0 40px;
+      color: rgba(255,255,255,.55);
+      font-size:12px;
+      border-top:1px solid rgba(255,255,255,.10);
+    }
+    .footerRow{display:flex; gap:14px; flex-wrap:wrap; align-items:center; justify-content:space-between}
+    .muted{color:rgba(255,255,255,.55)}
+
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:18px;
+      transform:translateX(-50%);
+      background: rgba(20,20,22,.92);
+      border: 1px solid rgba(255,255,255,.14);
+      color: rgba(255,255,255,.92);
+      padding:10px 12px;
+      border-radius: 14px;
+      box-shadow: 0 10px 22px rgba(0,0,0,.35);
+      font-size:12px;
+      opacity:0;
+      pointer-events:none;
+      transition: opacity .18s ease, transform .18s ease;
+      z-index:9999;
+      max-width:min(560px, calc(100vw - 24px));
+      text-align:center;
+    }
+    .toast.show{
+      opacity:1;
+      transform:translateX(-50%) translateY(-2px);
+    }
+
+    /* ✅ Patch mobile (ya incluido) */
+    input, select, textarea, button { font-size: 16px; }
+    a, button { -webkit-tap-highlight-color: transparent; }
+    :where(a, button, input, select, textarea){ min-height: 44px; }
+
+    @media (max-width: 980px){
+      .heroGrid{grid-template-columns:1fr}
+      .grid3{grid-template-columns: repeat(2, 1fr)}
+      .grid2{grid-template-columns:1fr}
+      .form{grid-template-columns:1fr}
+    }
+    @media (max-width: 720px){
+      :root{ --pad: 16px; }
+      .topbar .wrap{padding:12px var(--pad)}
+      .brand{min-width:0}
+      .brand h1{font-size:12px}
+      .brand p{font-size:11px}
+      .nav{gap:8px}
+      .chip{padding:8px 10px; font-size:11px}
+      .cardInner{padding:18px}
+      .headline{font-size:26px}
+      .grid3{grid-template-columns:1fr}
+      .btn{width:100%; justify-content:space-between}
+      .tableWrap{ overflow-x:auto; }
+      table{ min-width: 680px; }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .chip, .btn{transition:none}
+      .chip:hover, .btn:hover{transform:none}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bgGlow" aria-hidden="true"></div>
+
+  <header class="topbar" role="banner">
+    <div class="wrap">
+      <div class="brand" aria-label="Identidad institucional">
+        <div class="seal" aria-hidden="true"></div>
+        <div>
+          <h1>Gobernador del Estado</h1>
+          <p>Gobierno del Estado de San Luis Potosí · Administración 2045–2051</p>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Navegación">
+        <a class="chip" href="#inicio"><span class="dot" aria-hidden="true"></span><strong>Inicio</strong></a>
+        <a class="chip" href="#vision">Visión</a>
+        <a class="chip" href="#ejes">Ejes</a>
+        <a class="chip" href="#agenda">Agenda</a>
+        <a class="chip" href="#comunicados">Comunicados</a>
+        <a class="chip" href="#contacto">Contacto</a>
+        <a class="chip" href="index.html" title="Volver a la página principal">Inicio Gobierno</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap" id="inicio">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="heroGrid">
+        <article class="card">
+          <div class="cardInner">
+            <div class="kicker"><span class="bar" aria-hidden="true"></span> Titular del Poder Ejecutivo</div>
+            <h2 class="headline">Lucas Isaiah Cárdenas Plasencia</h2>
+            <p class="sub">
+              Gobernador Constitucional del Estado de San Luis Potosí (Administración 2045–2051).
+              Compromiso con el progreso, la cercanía ciudadana y un gobierno firme y moderno.
+            </p>
+
+            <div class="profile" aria-label="Ficha del Gobernador">
+              <div class="avatar" aria-hidden="true"></div>
+              <div>
+                <b>Ficha pública</b>
+                <div class="meta">
+                  <div><span class="muted">Nacimiento:</span> <strong>30 de septiembre de 2006</strong></div>
+                  <div><span class="muted">Sede:</span> Palacio de Gobierno (SLP)</div>
+                  <div><span class="muted">Correo:</span> <span class="mono">gobernador.lucas@slp-gob.mx</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ctaRow">
+              <a class="btn blue" href="#contacto">Contactar <span class="pill">Oficial</span></a>
+              <a class="btn" href="#agenda">Ver agenda <span class="pill">Semana</span></a>
+              <a class="btn secondary" href="#comunicados">Comunicados <span class="pill">Info</span></a>
+            </div>
+
+            <p class="help">
+              Nota: correo simulado para plantilla. Sustituye por el correo oficial real cuando lo tengas.
+            </p>
+          </div>
+        </article>
+
+        <aside class="card" id="vision">
+          <div class="cardInner">
+            <div class="kicker"><span class="bar" aria-hidden="true"></span> Visión de Estado</div>
+            <h2 class="headline" style="font-size:20px;margin-top:10px;">San Luis Pa’ Delante</h2>
+            <p class="sub" style="font-size:13px;">
+              Una visión de continuidad con transformación: un estado que avanza con carácter, reduce desigualdades,
+              moderniza su movilidad, eleva la seguridad y convierte la innovación en bienestar.
+            </p>
+
+            <div class="tableWrap" aria-label="Compromisos de visión">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Prioridad</th>
+                    <th>Enfoque</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Seguridad y paz social</strong></td>
+                    <td>Prevención, coordinación operativa y cero tolerancia al delito con respeto a derechos.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Movilidad moderna</strong></td>
+                    <td>Transporte eficiente, Metro Potosí por fases y conectividad metropolitana.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Bienestar y oportunidades</strong></td>
+                    <td>Programas sociales con enfoque territorial y resultados medibles.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Economía e inversión</strong></td>
+                    <td>Industria, empleo y relación gobierno–empresa con orden financiero.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Gobierno cercano</strong></td>
+                    <td>Atención ciudadana, transparencia y decisiones firmes con comunicación clara.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="help">
+              Consejo: aquí puedes incrustar un video de mensaje a la ciudadanía o un banner de “Informe trimestral”.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- EJES -->
+    <section id="ejes" aria-label="Ejes de gobierno">
+      <div class="sectionTitle">
+        <div>
+          <h2>Ejes estratégicos</h2>
+          <p>Guía de acción para el periodo 2045–2051.</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="block">
+          <div class="blockInner">
+            <h3>1) Seguridad con resultados</h3>
+            <p>Coordinación, profesionalización, inteligencia operativa y prevención en territorios prioritarios.</p>
+            <div class="tags">
+              <span class="tag">Prevención</span>
+              <span class="tag">Cero Tolerancia</span>
+              <span class="tag">Coordinación</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="blockInner">
+            <h3>2) Movilidad y redes</h3>
+            <p>Transporte público eficiente, Metro Potosí, vialidad segura y conectividad urbana.</p>
+            <div class="tags">
+              <span class="tag">Transporte</span>
+              <span class="tag">Metro Potosí</span>
+              <span class="tag">Ciudad conectada</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="blockInner">
+            <h3>3) Bienestar real</h3>
+            <p>Programas sociales con seguimiento, atención a zonas vulnerables y bienestar comunitario.</p>
+            <div class="tags">
+              <span class="tag">Zonas vulnerables</span>
+              <span class="tag">Resultados</span>
+              <span class="tag">Cercanía</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="blockInner">
+            <h3>4) Economía y empleo</h3>
+            <p>Inversión estratégica, cadenas productivas y talento local con competitividad.</p>
+            <div class="tags">
+              <span class="tag">Inversión</span>
+              <span class="tag">Industria</span>
+              <span class="tag">Empleo</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="blockInner">
+            <h3>5) Infraestructura inteligente</h3>
+            <p>Obras con impacto metropolitano, carreteras estratégicas y mantenimiento efectivo.</p>
+            <div class="tags">
+              <span class="tag">Obra pública</span>
+              <span class="tag">Metropolitano</span>
+              <span class="tag">Mantenimiento</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="blockInner">
+            <h3>6) Innovación para el futuro</h3>
+            <p>Ciencia, tecnología y digitalización al servicio del gobierno y la ciudadanía.</p>
+            <div class="tags">
+              <span class="tag">Innovación</span>
+              <span class="tag">Gobierno digital</span>
+              <span class="tag">Talento</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AGENDA -->
+    <section id="agenda" aria-label="Agenda del Gobernador">
+      <div class="sectionTitle">
+        <div>
+          <h2>Agenda</h2>
+          <p>Actividades públicas (plantilla). Reemplaza con eventos reales.</p>
+        </div>
+      </div>
+
+      <div class="tableWrap" aria-label="Tabla de agenda (placeholder)">
+        <table>
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Actividad</th>
+              <th>Lugar</th>
+              <th>Tipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="mono">Lun</td>
+              <td>Reunión de coordinación de seguridad</td>
+              <td>Palacio de Gobierno</td>
+              <td><span class="tag">Seguridad</span></td>
+            </tr>
+            <tr>
+              <td class="mono">Mar</td>
+              <td>Supervisión de obra estratégica</td>
+              <td>Zona Metropolitana</td>
+              <td><span class="tag">Infraestructura</span></td>
+            </tr>
+            <tr>
+              <td class="mono">Mié</td>
+              <td>Mesa de movilidad y Metro Potosí</td>
+              <td>Centro de Planeación</td>
+              <td><span class="tag">Movilidad</span></td>
+            </tr>
+            <tr>
+              <td class="mono">Jue</td>
+              <td>Encuentro con sector productivo</td>
+              <td>Parque Industrial</td>
+              <td><span class="tag">Economía</span></td>
+            </tr>
+            <tr>
+              <td class="mono">Vie</td>
+              <td>Gira de bienestar comunitario</td>
+              <td>Municipios</td>
+              <td><span class="tag">Bienestar</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="help">
+        Tip: puedes cambiar “Lun/Mar…” por fechas reales y agregar un botón para exportar PDF.
+      </p>
+    </section>
+
+    <!-- COMUNICADOS -->
+    <section id="comunicados" aria-label="Comunicados">
+      <div class="sectionTitle">
+        <div>
+          <h2>Comunicados</h2>
+          <p>Noticias, mensajes y posicionamientos (plantilla).</p>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="block">
+          <div class="blockInner">
+            <h3>Mensaje a la ciudadanía</h3>
+            <p>San Luis avanza con firmeza: seguridad, movilidad y bienestar con resultados medibles.</p>
+            <div class="tags">
+              <span class="tag">Mensaje</span>
+              <span class="tag">Gobierno</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="blockInner">
+            <h3>Informe de avance</h3>
+            <p>Indicadores y acciones prioritarias del trimestre en seguridad, obra y programas sociales.</p>
+            <div class="tags">
+              <span class="tag">Informe</span>
+              <span class="tag">Indicadores</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="help">
+        Aquí puedes enlazar un apartado de transparencia o un repositorio de comunicados en PDF.
+      </p>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" aria-label="Contacto">
+      <div class="sectionTitle">
+        <div>
+          <h2>Contacto</h2>
+          <p>Canal oficial para atención y solicitudes (no urgentes).</p>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="block">
+          <div class="blockInner">
+            <h3>Canales oficiales</h3>
+            <p>
+              Correo (simulado): <a class="mono" href="mailto:gobernador.lucas@slp-gob.mx">gobernador.lucas@slp-gob.mx</a><br/>
+              Oficina: <span class="muted">[Agregar teléfono y extensión]</span><br/>
+              Dirección: <span class="muted">Palacio de Gobierno, SLP</span>
+            </p>
+            <div class="tags">
+              <span class="tag">Atención</span>
+              <span class="tag">Gestión</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="blockInner">
+            <h3>Solicitud ciudadana</h3>
+            <p>Envía un mensaje para canalización a la dependencia correspondiente.</p>
+            <div class="tags">
+              <span class="tag">Canalización</span>
+              <span class="tag">Seguimiento</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:14px;">
+        <div class="cardInner">
+          <div class="kicker"><span class="bar" aria-hidden="true"></span> Mensaje</div>
+          <p class="sub" style="font-size:13px;margin-top:8px;">
+            Este formulario es demostrativo. Para uso real, integra folio y respuesta institucional.
+          </p>
+
+          <form class="form" id="formContacto">
+            <input class="input" name="nombre" placeholder="Nombre" autocomplete="name" required />
+            <input class="input" name="correo" placeholder="Correo" inputmode="email" autocomplete="email" required />
+            <select name="tema" required>
+              <option value="">Tema (elige uno)</option>
+              <option>Seguridad</option>
+              <option>Movilidad / Transporte</option>
+              <option>Salud</option>
+              <option>Educación</option>
+              <option>Obra pública</option>
+              <option>Bienestar</option>
+              <option>Economía</option>
+              <option>Otro</option>
+            </select>
+            <input class="input" name="telefono" placeholder="Teléfono (opcional)" inputmode="tel" />
+            <textarea name="mensaje" placeholder="Escribe tu mensaje…" required></textarea>
+
+            <div style="grid-column:1/-1; display:flex; gap:10px; flex-wrap:wrap; margin-top:2px;">
+              <button class="btn secondary" type="submit">Enviar mensaje</button>
+              <a class="btn blue" href="mailto:gobernador.lucas@slp-gob.mx">Enviar correo <span class="pill">Email</span></a>
+              <a class="btn" href="index.html">Volver <span class="pill">Inicio</span></a>
+            </div>
+          </form>
+
+          <p class="help">
+            Consejo: agrega reCAPTCHA / validación y un aviso de privacidad real cuando lo publiques.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer role="contentinfo">
+      <div class="footerRow">
+        <div>
+          <strong>Gobernador Lucas Isaiah Cárdenas Plasencia</strong> · Gobierno del Estado de San Luis Potosí<br/>
+          <span class="muted">Administración 2045–2051 · “San Luis Pa’ Delante”</span>
+        </div>
+        <div class="muted">
+          Plantilla HTML · Página del Gobernador (responsive).
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" aria-live="polite"></div>
+
+  <script>
+    const toast = document.getElementById("toast");
+    let toastTimer = null;
+
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 1500);
+    }
+
+    document.getElementById("formContacto").addEventListener("submit", (e) => {
+      e.preventDefault();
+      showToast("Mensaje enviado (demo). Integra folio y sistema oficial para respuesta.");
+      e.target.reset();
+    });
+
+    // Scroll suave
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href");
+        if(!id || id === "#") return;
+        const el = document.querySelector(id);
+        if(!el) return;
+        e.preventDefault();
+        el.scrollIntoView({behavior:"smooth", block:"start"});
+      });
+    });
+  </script>
+</body>
+</html>
