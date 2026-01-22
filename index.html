@@ -421,6 +421,50 @@
       opacity:1;
       transform:translateX(-50%) translateY(-2px);
     }
+    /* === PATCH MOBILE (agregar al final del CSS) === */
+
+/* Evita zoom raro en iOS */
+input, select, textarea, button { font-size: 16px; }
+
+/* Mejora tap táctil */
+a, button { -webkit-tap-highlight-color: transparent; }
+:where(a, button, input, select, textarea){
+  min-height: 44px;
+}
+
+/* Ajustes móviles */
+@media (max-width: 720px){
+  :root{ --pad: 16px; }
+
+  .wrap{ padding: var(--pad); }
+
+  .heroGrid,
+  .grid3,
+  .grid2,
+  .grid,
+  .alertRow,
+  .form{
+    grid-template-columns: 1fr !important;
+  }
+
+  .btn{
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .nav{ gap: 8px; }
+  .chip{ padding: 8px 10px; font-size: 11px; }
+
+  .headline{ font-size: 26px; }
+  .sub{ font-size: 13px; }
+
+  .tableWrap{ overflow-x: auto; }
+  table{ min-width: 680px; }
+}
+
+@media (max-width: 420px){
+  .headline{ font-size: 24px; }
+}
   </style>
 </head>
 
