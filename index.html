@@ -648,62 +648,182 @@ a, button { -webkit-tap-highlight-color: transparent; }
   <script>
     // ✅ Define aquí las rutas reales (según cómo guardaste los archivos)
     const RUTAS = {
-      seguridad: "secretarias/seguridad.html",
-      movilidad: "secretarias/movilidad.html"
-    };
+      gobernador: "gobernador.html",
 
-    const dependencias = [
-      // Gobernador (si quieres que aparezca como dependencia, lo dejamos)
-      { tipo: "secretaria", siglas: "GC", dependencia: "Gobernador Constitucional", titular: "Lucas Isaiah Cárdenas Plasencia", link: null, funciones: ["Titular del Poder Ejecutivo"] },
+    gobernacion: "secretarias/gobernacion.html",
+    seguridad: "secretarias/seguridad.html",
+    finanzas: "secretarias/finanzas.html",
+    movilidad: "secretarias/movilidad.html",
+    obras: "secretarias/obras.html",
+    rural: "secretarias/rural-hidraulicos.html",
+    ambiente: "secretarias/medio-ambiente.html",
+    bienestar: "secretarias/bienestar.html",
+    educacion: "secretarias/educacion.html",
+    cultura: "secretarias/cultura-turismo.html",
+    economia: "secretarias/economia.html",
+    salud: "secretarias/salud.html",
+    ciencia: "secretarias/ciencia-innovacion.html",
 
-      { tipo: "secretaria", siglas: "GI", dependencia: "Secretaría de Gobernación y Enlace Institucional", titular: "Said Gabriel García Mendoza", link: null,
-        funciones: ["Política interior","Relación con poderes, municipios y federación","Gobernabilidad y crisis institucionales"] },
+    amar: "organismos/amar-a-san-luis.html",
+    inpode: "organismos/inpode.html",
+    juventud: "organismos/juventud.html"
+  };
 
-      // ✅ Seguridad (con link)
-      { tipo: "secretaria", siglas: "SE", dependencia: "Secretaría de Seguridad Ciudadana Estatal", titular: "Oscar Emmanuel Cerda Tello", link: RUTAS.seguridad,
-        funciones: ["Fuerza Civil Estatal","Fuerza Civil Urbana","Fuerza Élite Estatal","Estrategia del Plan Cero Tolerancia"] },
+  const dependencias = [
+    // Gobernador
+    {
+      tipo: "secretaria",
+      siglas: "GC",
+      dependencia: "Gobernador Constitucional",
+      titular: "Lucas Isaiah Cárdenas Plasencia",
+      link: RUTAS.gobernador,
+      funciones: ["Titular del Poder Ejecutivo"]
+    },
 
-      { tipo: "secretaria", siglas: "FA", dependencia: "Secretaría de Finanzas y Administración Pública", titular: "Jorge Alonso Castañón", link: null,
-        funciones: ["Presupuesto estatal","Recaudación","Control del gasto y deuda","Modernización financiera"] },
+    {
+      tipo: "secretaria",
+      siglas: "GI",
+      dependencia: "Secretaría de Gobernación y Enlace Institucional",
+      titular: "Said Gabriel García Mendoza",
+      link: RUTAS.gobernacion,
+      funciones: ["Política interior","Relación con poderes, municipios y federación","Gobernabilidad y crisis institucionales"]
+    },
 
-      // ✅ Movilidad (con link)
-      { tipo: "secretaria", siglas: "MR", dependencia: "Secretaría de Movilidad y Redes", titular: "Ing. Luis Gael Cossio Almendárez", link: RUTAS.movilidad,
-        funciones: ["Transporte público","Metro Potosí","Vialidad metropolitana","Conectividad urbana"] },
+    {
+      tipo: "secretaria",
+      siglas: "SE",
+      dependencia: "Secretaría de Seguridad Ciudadana Estatal",
+      titular: "Oscar Emmanuel Cerda Tello",
+      link: RUTAS.seguridad,
+      funciones: ["Fuerza Civil Estatal","Fuerza Civil Urbana","Fuerza Élite Estatal","Estrategia del Plan Cero Tolerancia"]
+    },
 
-      { tipo: "secretaria", siglas: "OI", dependencia: "Secretaría de Obras Públicas e Infraestructura", titular: "Arq. Citlali Constante", link: null,
-        funciones: ["Infraestructura estatal","Carreteras y obras estratégicas","Proyectos metropolitanos"] },
+    {
+      tipo: "secretaria",
+      siglas: "FA",
+      dependencia: "Secretaría de Finanzas y Administración Pública",
+      titular: "Jorge Alonso Castañón",
+      link: RUTAS.finanzas,
+      funciones: ["Presupuesto estatal","Recaudación","Control del gasto y deuda","Modernización financiera"]
+    },
 
-      { tipo: "secretaria", siglas: "RH", dependencia: "Secretaría de Desarrollo Rural y Recursos Hidráulicos", titular: "Jesús Alberto Nava Argüelles", link: null,
-        funciones: ["Campo","Agua","Presas, riego y sustentabilidad rural"] },
+    {
+      tipo: "secretaria",
+      siglas: "MR",
+      dependencia: "Secretaría de Movilidad y Redes",
+      titular: "Ing. Luis Gael Cossio Almendárez",
+      link: RUTAS.movilidad,
+      funciones: ["Transporte público","Metro Potosí","Vialidad metropolitana","Conectividad urbana"]
+    },
 
-      { tipo: "secretaria", siglas: "MA", dependencia: "Secretaría de Medio Ambiente y Sustentabilidad", titular: "Héctor Iván Lozano Paredes", link: null,
-        funciones: ["Protección ambiental","Regulación turística sustentable","Conservación de ecosistemas"] },
+    {
+      tipo: "secretaria",
+      siglas: "OI",
+      dependencia: "Secretaría de Obras Públicas e Infraestructura",
+      titular: "Arq. Citlali Constante",
+      link: RUTAS.obras,
+      funciones: ["Infraestructura estatal","Carreteras y obras estratégicas","Proyectos metropolitanos"]
+    },
 
-      { tipo: "secretaria", siglas: "SB", dependencia: "Secretaría de Desarrollo Social y Bienestar", titular: "Camila Campos Rodríguez", link: null,
-        funciones: ["Programas sociales","Atención a zonas vulnerables","Bienestar comunitario"] },
+    {
+      tipo: "secretaria",
+      siglas: "RH",
+      dependencia: "Secretaría de Desarrollo Rural y Recursos Hidráulicos",
+      titular: "Jesús Alberto Nava Argüelles",
+      link: RUTAS.rural,
+      funciones: ["Campo","Agua","Presas, riego y sustentabilidad rural"]
+    },
 
-      { tipo: "secretaria", siglas: "ED", dependencia: "Secretaría de Educación Estatal", titular: "Patricia Castillo Méndez", link: null,
-        funciones: ["Educación básica, media y superior","Infraestructura educativa","Calidad académica"] },
+    {
+      tipo: "secretaria",
+      siglas: "MA",
+      dependencia: "Secretaría de Medio Ambiente y Sustentabilidad",
+      titular: "Héctor Iván Lozano Paredes",
+      link: RUTAS.ambiente,
+      funciones: ["Protección ambiental","Regulación turística sustentable","Conservación de ecosistemas"]
+    },
 
-      { tipo: "secretaria", siglas: "CT", dependencia: "Secretaría de Cultura, Turismo y Patrimonio", titular: "Edgar Saúl Martínez", link: null,
-        funciones: ["Cultura","Turismo","Patrimonio histórico"] },
+    {
+      tipo: "secretaria",
+      siglas: "SB",
+      dependencia: "Secretaría de Desarrollo Social y Bienestar",
+      titular: "Camila Campos Rodríguez",
+      link: RUTAS.bienestar,
+      funciones: ["Programas sociales","Atención a zonas vulnerables","Bienestar comunitario"]
+    },
 
-      { tipo: "secretaria", siglas: "EC", dependencia: "Secretaría de Economía", titular: "Aaron Barriga Álvarez", link: null,
-        funciones: ["Atracción de inversiones","Desarrollo industrial","Relación gobierno–empresa"] },
+    {
+      tipo: "secretaria",
+      siglas: "ED",
+      dependencia: "Secretaría de Educación Estatal",
+      titular: "Patricia Castillo Méndez",
+      link: RUTAS.educacion,
+      funciones: ["Educación básica, media y superior","Infraestructura educativa","Calidad académica"]
+    },
 
-      { tipo: "secretaria", siglas: "SA", dependencia: "Secretaría de Salud Estatal", titular: "Dr. Jesús Emiliano Mata Vega", link: null,
-        funciones: ["Sistema de salud estatal","Hospitales","Prevención y atención médica"] },
+    {
+      tipo: "secretaria",
+      siglas: "CT",
+      dependencia: "Secretaría de Cultura, Turismo y Patrimonio",
+      titular: "Edgar Saúl Martínez",
+      link: RUTAS.cultura,
+      funciones: ["Cultura","Turismo","Patrimonio histórico"]
+    },
 
-      { tipo: "secretaria", siglas: "IT", dependencia: "Secretaría de Ciencia, Innovación y Tecnología", titular: "Santiago Galván Villagómez", link: null,
-        funciones: ["Investigación científica","Innovación tecnológica","Vinculación academia–industria"] },
+    {
+      tipo: "secretaria",
+      siglas: "EC",
+      dependencia: "Secretaría de Economía",
+      titular: "Aaron Barriga Álvarez",
+      link: RUTAS.economia,
+      funciones: ["Atracción de inversiones","Desarrollo industrial","Relación gobierno–empresa"]
+    },
 
-      // Organismos
-      { tipo: "organismo", siglas: "AS", dependencia: "Amar a San Luis (Organismo Estatal)", titular: "Camila Rodríguez Hernández", link: null,
-        funciones: ["Atención integral a familias","Centros infantiles","Adultos mayores","Programas comunitarios"] },
+    {
+      tipo: "secretaria",
+      siglas: "SA",
+      dependencia: "Secretaría de Salud Estatal",
+      titular: "Dr. Jesús Emiliano Mata Vega",
+      link: RUTAS.salud,
+      funciones: ["Sistema de salud estatal","Hospitales","Prevención y atención médica"]
+    },
 
-      { tipo: "organismo", siglas: "DP", dependencia: "Instituto Potosino del Deporte (INPODE)", titular: "Jesús Ricardo Esquivel Delgado", link: null, funciones: [] },
+    {
+      tipo: "secretaria",
+      siglas: "IT",
+      dependencia: "Secretaría de Ciencia, Innovación y Tecnología",
+      titular: "Santiago Galván Villagómez",
+      link: RUTAS.ciencia,
+      funciones: ["Investigación científica","Innovación tecnológica","Vinculación academia–industria"]
+    },
 
-      { tipo: "organismo", siglas: "JU", dependencia: "Instituto Potosino de la Juventud", titular: "Denilson Córdova", link: null, funciones: [] }
+    // Organismos
+    {
+      tipo: "organismo",
+      siglas: "AS",
+      dependencia: "Amar a San Luis (Organismo Estatal)",
+      titular: "Camila Rodríguez Hernández",
+      link: RUTAS.amar,
+      funciones: ["Atención integral a familias","Centros infantiles","Adultos mayores","Programas comunitarios"]
+    },
+
+    {
+      tipo: "organismo",
+      siglas: "DP",
+      dependencia: "Instituto Potosino del Deporte (INPODE)",
+      titular: "Jesús Ricardo Esquivel Delgado",
+      link: RUTAS.inpode,
+      funciones: []
+    },
+
+    {
+      tipo: "organismo",
+      siglas: "JU",
+      dependencia: "Instituto Potosino de la Juventud",
+      titular: "Denilson Córdova",
+      link: RUTAS.juventud,
+      funciones: []
+    }
     ];
 
     const grid = document.getElementById("grid");
