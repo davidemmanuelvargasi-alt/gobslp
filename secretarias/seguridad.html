@@ -1,0 +1,1032 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Secretaría de Seguridad Ciudadana Estatal | Gobierno del Estado de San Luis Potosí</title>
+  <meta name="description" content="Sitio oficial de la Secretaría de Seguridad Ciudadana Estatal: prevención, atención de emergencias, denuncia, transparencia y programas de seguridad." />
+
+  <style>
+    :root{
+      /* Identidad Gobierno */
+      --orange:#F57C00;
+      --yellow:#FFC107;
+      --graphite:#1E1E1E;
+      --light:#F4F4F4;
+
+      /* UI */
+      --bg:#0f0f10;
+      --text:#f5f5f5;
+      --muted:#b7b7b7;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 10px 25px rgba(0,0,0,.35);
+
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1180px;
+      --pad: 24px;
+
+      /* Seguridad: acento frío (solo UI, no cambia identidad oficial) */
+      --blue: rgba(93, 173, 226, .95);
+      --blue2: rgba(93, 173, 226, .28);
+      --danger: rgba(255, 99, 99, .95);
+      --danger2: rgba(255, 99, 99, .22);
+      --ok: rgba(72, 222, 152, .95);
+      --ok2: rgba(72, 222, 152, .20);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: var(--bg);
+      color:var(--text);
+      line-height:1.35;
+      -webkit-text-size-adjust:100%;
+      text-size-adjust:100%;
+      position:relative;
+      overflow-x:hidden;
+    }
+
+    /* Glow controlado */
+    .bgGlow{
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+
+      background:
+        radial-gradient(900px 450px at 20% 8%, rgba(245,124,0,.12), transparent 60%),
+        radial-gradient(720px 420px at 82% 10%, rgba(93,173,226,.12), transparent 60%),
+        radial-gradient(700px 380px at 85% 18%, rgba(255,193,7,.09), transparent 55%);
+
+      -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 88%);
+      mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 88%);
+    }
+
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:var(--pad)}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(to bottom, rgba(15,15,16,.86), rgba(15,15,16,.55));
+      border-bottom:1px solid var(--border);
+    }
+    .topbar .wrap{display:flex; align-items:center; gap:16px; padding:14px var(--pad)}
+
+    .brand{display:flex; align-items:center; gap:12px; min-width:260px}
+    .seal{
+      width:44px; height:44px; border-radius:14px;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,.22), transparent 55%),
+        linear-gradient(135deg, rgba(93,173,226,.95), rgba(245,124,0,.85));
+      box-shadow: 0 10px 25px rgba(93,173,226,.14);
+      border:1px solid rgba(255,255,255,.18);
+      position:relative;
+      overflow:hidden;
+      flex:0 0 auto;
+    }
+    .seal:after{
+      content:"";
+      position:absolute; inset:-40% -40%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), transparent 60%);
+      transform: rotate(25deg);
+    }
+    .brand h1{
+      font-size:13px; margin:0;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.85);
+    }
+    .brand p{margin:2px 0 0; font-size:12px; color:var(--muted)}
+    .nav{
+      margin-left:auto;
+      display:flex; gap:10px; align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color:rgba(255,255,255,.9);
+      font-size:12px;
+      text-decoration:none;
+      cursor:pointer;
+      user-select:none;
+      transition:transform .15s ease, background .15s ease, border-color .15s ease;
+      white-space:nowrap;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .chip:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.18)}
+    .chip strong{font-weight:650}
+    .dot{width:8px;height:8px;border-radius:99px;background:var(--orange); box-shadow:0 0 0 3px rgba(245,124,0,.15)}
+
+    .hero{padding:26px 0 10px}
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid var(--border);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      min-width:0;
+    }
+    .cardInner{padding:22px}
+    .kicker{
+      display:flex; align-items:center; gap:10px;
+      font-size:12px; color:rgba(255,255,255,.82);
+      letter-spacing:.12em; text-transform:uppercase;
+    }
+    .kicker .bar{width:22px;height:10px;border-radius:999px;background:linear-gradient(90deg,var(--orange),rgba(93,173,226,.9))}
+    .headline{
+      margin:10px 0 0;
+      font-size:30px;
+      letter-spacing:-.02em;
+      line-height:1.05;
+    }
+    .sub{margin:10px 0 0; color:rgba(255,255,255,.78); font-size:14px; max-width:60ch}
+
+    .alertRow{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    .alert{
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.22);
+      padding:12px 12px;
+      display:flex; gap:10px; align-items:flex-start;
+      min-width:0;
+    }
+    .badge{
+      width:32px;height:32px;border-radius:14px;
+      display:grid; place-items:center;
+      border:1px solid rgba(255,255,255,.14);
+      flex:0 0 auto;
+      background: rgba(255,255,255,.05);
+    }
+    .badge.danger{background: var(--danger2); border-color: rgba(255,99,99,.32)}
+    .badge.ok{background: var(--ok2); border-color: rgba(72,222,152,.32)}
+    .badge.info{background: var(--blue2); border-color: rgba(93,173,226,.32)}
+    .alert b{display:block; font-size:13px; margin-bottom:4px}
+    .alert p{margin:0; color:rgba(255,255,255,.74); font-size:13px}
+
+    /* CTA Buttons */
+    .ctaRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+    .btn{
+      padding:12px 14px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: linear-gradient(135deg, rgba(245,124,0,.95), rgba(255,193,7,.75));
+      color: rgba(15,15,16,.95);
+      font-weight:800;
+      cursor:pointer;
+      transition: transform .15s ease, filter .15s ease;
+      flex: 0 0 auto;
+      text-decoration:none;
+      -webkit-tap-highlight-color: transparent;
+      display:inline-flex; align-items:center; gap:10px;
+    }
+    .btn:hover{transform: translateY(-1px); filter: brightness(1.05)}
+    .btn.secondary{
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.90);
+      font-weight:700;
+    }
+    .btn.danger{
+      background: linear-gradient(135deg, rgba(255,99,99,.95), rgba(245,124,0,.85));
+      color: rgba(15,15,16,.95);
+    }
+    .btn .pill{
+      font-size:11px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.15);
+      background: rgba(255,255,255,.35);
+      color: rgba(0,0,0,.85);
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    /* Side card: directorio rápido */
+    .miniGrid{display:grid; grid-template-columns:1fr; gap:12px; margin-top:14px}
+    .mini{
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      padding:12px 14px;
+      min-width:0;
+    }
+    .mini strong{display:block; margin:0 0 6px; font-size:13px}
+    .mini p{margin:0; color:rgba(255,255,255,.74); font-size:13px}
+    .mini .row{
+      margin-top:10px;
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .chip2{
+      font-size:12px;
+      color: rgba(255,255,255,.82);
+      background: rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.10);
+      padding:8px 10px;
+      border-radius: 999px;
+      text-decoration:none;
+      display:inline-flex; align-items:center; gap:8px;
+    }
+
+    section{padding:18px 0}
+    .sectionTitle{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:14px;
+      margin-top:18px;
+      flex-wrap:wrap;
+    }
+    .sectionTitle h2{margin:0; font-size:18px; letter-spacing:.02em}
+    .sectionTitle p{margin:0; color:var(--muted); font-size:13px}
+
+    /* Grids */
+    .grid3{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .grid2{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:14px;
+    }
+
+    .block{
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      box-shadow: 0 10px 22px rgba(0,0,0,.22);
+      overflow:hidden;
+      min-width:0;
+      position:relative;
+    }
+    .block::before{
+      content:"";
+      position:absolute; left:0; top:0; right:0; height:4px;
+      background: linear-gradient(90deg, rgba(93,173,226,.9), rgba(245,124,0,.85));
+      opacity:.9;
+    }
+    .blockInner{padding:16px 16px}
+    .block h3{margin:0; font-size:14px; letter-spacing:.01em}
+    .block p{margin:8px 0 0; color:rgba(255,255,255,.74); font-size:13px}
+    .tags{margin-top:10px; display:flex; gap:8px; flex-wrap:wrap}
+    .tag{
+      font-size:12px;
+      color: rgba(255,255,255,.78);
+      background: rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.10);
+      padding:7px 10px;
+      border-radius: 999px;
+      white-space:nowrap;
+    }
+
+    /* Forms */
+    .form{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    .input, select, textarea{
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.92);
+      padding:12px 12px;
+      border-radius: 14px;
+      outline:none;
+      width:100%;
+      font-family:inherit;
+    }
+    textarea{min-height:120px; resize:vertical}
+    .help{margin-top:10px; color:rgba(255,255,255,.60); font-size:12px; line-height:1.5}
+
+    /* Tables */
+    .tableWrap{
+      margin-top:16px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 18px;
+      overflow:hidden;
+      background: rgba(255,255,255,.03);
+    }
+    table{width:100%; border-collapse:collapse}
+    th,td{
+      padding:12px 12px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      text-align:left;
+      font-size:13px;
+      vertical-align:top;
+    }
+    th{color:rgba(255,255,255,.88); background: rgba(0,0,0,.18); font-weight:800}
+    td{color:rgba(255,255,255,.74)}
+    tr:last-child td{border-bottom:none}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace}
+
+    footer{
+      margin-top:28px;
+      padding:20px 0 40px;
+      color: rgba(255,255,255,.55);
+      font-size:12px;
+      border-top:1px solid rgba(255,255,255,.10);
+    }
+    .footerRow{display:flex; gap:14px; flex-wrap:wrap; align-items:center; justify-content:space-between}
+    .muted{color:rgba(255,255,255,.55)}
+    .sr{position:absolute; left:-9999px}
+
+    /* Toast */
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:18px;
+      transform:translateX(-50%);
+      background: rgba(20,20,22,.92);
+      border: 1px solid rgba(255,255,255,.14);
+      color: rgba(255,255,255,.92);
+      padding:10px 12px;
+      border-radius: 14px;
+      box-shadow: 0 10px 22px rgba(0,0,0,.35);
+      font-size:12px;
+      opacity:0;
+      pointer-events:none;
+      transition: opacity .18s ease, transform .18s ease;
+      z-index:9999;
+      max-width:min(520px, calc(100vw - 24px));
+      text-align:center;
+    }
+    .toast.show{
+      opacity:1;
+      transform:translateX(-50%) translateY(-2px);
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .heroGrid{grid-template-columns:1fr}
+      .grid3{grid-template-columns: repeat(2, 1fr)}
+      .grid2{grid-template-columns:1fr}
+      .form{grid-template-columns:1fr}
+    }
+    @media (max-width: 720px){
+      :root{ --pad: 16px; }
+      .topbar .wrap{padding:12px var(--pad)}
+      .brand{min-width:0}
+      .brand h1{font-size:12px}
+      .brand p{font-size:11px}
+      .nav{gap:8px}
+      .chip{padding:8px 10px; font-size:11px}
+      .cardInner{padding:18px}
+      .headline{font-size:26px}
+      .alertRow{grid-template-columns:1fr}
+      .grid3{grid-template-columns:1fr}
+      .btn{width:100%; justify-content:space-between}
+    }
+    @media (pointer: coarse){
+      .chip, .btn, .input, select, textarea{min-height:44px}
+    }
+    @media (prefers-reduced-motion: reduce){
+      .chip, .btn{transition:none}
+      .chip:hover, .btn:hover{transform:none}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bgGlow" aria-hidden="true"></div>
+
+  <header class="topbar" role="banner">
+    <div class="wrap">
+      <div class="brand" aria-label="Identidad institucional">
+        <div class="seal" aria-hidden="true"></div>
+        <div>
+          <h1>Secretaría de Seguridad Ciudadana Estatal</h1>
+          <p>Gobierno del Estado de San Luis Potosí · Administración 2045–2051</p>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Navegación">
+        <a class="chip" href="#inicio"><span class="dot" aria-hidden="true"></span><strong>Inicio</strong></a>
+        <a class="chip" href="#emergencias">Emergencias</a>
+        <a class="chip" href="#programas">Programas</a>
+        <a class="chip" href="#transparencia">Transparencia</a>
+        <a class="chip" href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap" id="inicio">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="heroGrid">
+        <article class="card">
+          <div class="cardInner">
+            <div class="kicker"><span class="bar" aria-hidden="true"></span> Seguridad · Prevención · Respuesta</div>
+            <h2 class="headline">Seguridad Ciudadana con Cero Tolerancia al Delito</h2>
+            <p class="sub">
+              La Secretaría coordina la Fuerza Civil Estatal, Fuerza Civil Urbana y Fuerza Élite Estatal,
+              así como la estrategia del <strong>Plan Cero Tolerancia</strong> para proteger a la ciudadanía,
+              fortalecer la prevención y profesionalizar la respuesta operativa.
+            </p>
+
+            <div class="alertRow" id="emergencias">
+              <div class="alert">
+                <div class="badge danger" aria-hidden="true">!</div>
+                <div>
+                  <b>Emergencias</b>
+                  <p>Llama al <strong class="mono">911</strong> para emergencias. Atención inmediata.</p>
+                </div>
+              </div>
+              <div class="alert">
+                <div class="badge info" aria-hidden="true">i</div>
+                <div>
+                  <b>Denuncia anónima</b>
+                  <p>Reporta de forma anónima al <strong class="mono">089</strong>. Tu identidad se protege.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="ctaRow">
+              <a class="btn danger" href="tel:911" aria-label="Llamar al 911">
+                Llamar 911 <span class="pill">Urgente</span>
+              </a>
+              <a class="btn" href="tel:089" aria-label="Llamar al 089">
+                Denuncia 089 <span class="pill">Anónima</span>
+              </a>
+              <a class="btn secondary" href="#reporte" aria-label="Ir a Reporte ciudadano">
+                Reporte ciudadano <span class="pill">Web</span>
+              </a>
+            </div>
+
+            <p class="help">
+              <strong>Importante:</strong> esta página no sustituye a los servicios de emergencia.
+              Si hay riesgo inmediato, utiliza <span class="mono">911</span>.
+            </p>
+          </div>
+        </article>
+
+        <!-- Side card: directorio rápido -->
+        <aside class="card">
+          <div class="cardInner">
+            <div class="kicker"><span class="bar" aria-hidden="true"></span> Directorio</div>
+            <h2 class="headline" style="font-size:18px;margin-top:10px;">Contacto rápido</h2>
+            <p class="sub" style="font-size:13px;">Vías oficiales y atención ciudadana.</p>
+
+            <div class="miniGrid">
+              <div class="mini">
+                <strong>Titular de la Secretaría</strong>
+                <p><b>Oscar Emmanuel Cerda Tello</b></p>
+                <div class="row">
+                  <a class="chip2" href="#estructura">Estructura operativa</a>
+                  <a class="chip2" href="#mision">Misión</a>
+                </div>
+              </div>
+
+              <div class="mini">
+                <strong>Atención Ciudadana</strong>
+                <p>Orientación, canalización y seguimiento.</p>
+                <div class="row">
+                  <a class="chip2" href="mailto:atencion.seguridad@slp.gob.mx">Correo</a>
+                  <a class="chip2" href="#contacto">Formulario</a>
+                </div>
+                <p class="help">*Reemplaza el correo por el oficial real cuando lo tengas.</p>
+              </div>
+
+              <div class="mini">
+                <strong>Redes y avisos</strong>
+                <p>Comunicados oficiales y alertas preventivas.</p>
+                <div class="row">
+                  <a class="chip2" href="#" title="Enlace placeholder">X / Twitter</a>
+                  <a class="chip2" href="#" title="Enlace placeholder">Facebook</a>
+                  <a class="chip2" href="#" title="Enlace placeholder">WhatsApp</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- MISIÓN / VISIÓN -->
+    <section id="mision" aria-label="Misión y líneas estratégicas">
+      <div class="sectionTitle">
+        <div>
+          <h2>Misión y líneas estratégicas</h2>
+          <p>Enfoque integral: prevención, proximidad, inteligencia y reacción.</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="block">
+          <div class="blockInner">
+            <h3>Prevención y proximidad social</h3>
+            <p>Intervención temprana, patrullaje preventivo y vínculos comunitarios para reducir riesgos.</p>
+            <div class="tags">
+              <span class="tag">Vecindario seguro</span>
+              <span class="tag">Escuela segura</span>
+              <span class="tag">Cultura cívica</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="blockInner">
+            <h3>Inteligencia operativa</h3>
+            <p>Análisis de patrones, puntos críticos y coordinación interinstitucional para decisiones rápidas.</p>
+            <div class="tags">
+              <span class="tag">Mapeo del delito</span>
+              <span class="tag">Operativos focalizados</span>
+              <span class="tag">Coordinación</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="blockInner">
+            <h3>Respuesta y reacción</h3>
+            <p>Despliegue táctico profesional, tiempos de respuesta y protección de la integridad ciudadana.</p>
+            <div class="tags">
+              <span class="tag">Respuesta inmediata</span>
+              <span class="tag">Protocolos</span>
+              <span class="tag">Derechos humanos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ESTRUCTURA -->
+    <section id="estructura" aria-label="Estructura operativa">
+      <div class="sectionTitle">
+        <div>
+          <h2>Estructura operativa</h2>
+          <p>Componentes principales de despliegue y coordinación.</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="block">
+          <div class="blockInner">
+            <h3>Fuerza Civil Estatal</h3>
+            <p>Operación estatal, coordinación regional, prevención y reacción en rutas estratégicas.</p>
+            <div class="tags">
+              <span class="tag">Cobertura estatal</span>
+              <span class="tag">Patrullaje</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="blockInner">
+            <h3>Fuerza Civil Urbana</h3>
+            <p>Proximidad y presencia metropolitana, patrullaje preventivo y atención a reportes.</p>
+            <div class="tags">
+              <span class="tag">Zonas urbanas</span>
+              <span class="tag">Proximidad</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="blockInner">
+            <h3>Fuerza Élite Estatal</h3>
+            <p>Intervención táctica especializada, apoyo en operativos de alto impacto y rescate.</p>
+            <div class="tags">
+              <span class="tag">Alto impacto</span>
+              <span class="tag">Táctico</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRAMAS -->
+    <section id="programas" aria-label="Programas y servicios">
+      <div class="sectionTitle">
+        <div>
+          <h2>Programas y servicios</h2>
+          <p>Acciones preventivas, atención y capacitación ciudadana.</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="block">
+          <div class="blockInner">
+            <h3>Plan Cero Tolerancia</h3>
+            <p>Operación basada en presencia, inteligencia y respuesta rápida; enfoque a delitos prioritarios.</p>
+            <div class="tags">
+              <span class="tag">Prioridad</span>
+              <span class="tag">Operativos</span>
+              <span class="tag">Resultados</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="blockInner">
+            <h3>Prevención en escuelas</h3>
+            <p>Talleres, rutas seguras, protocolos y colaboración con comunidad escolar.</p>
+            <div class="tags">
+              <span class="tag">Escuela segura</span>
+              <span class="tag">Prevención</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="blockInner">
+            <h3>Seguridad vial y movilidad</h3>
+            <p>Prevención de siniestros, alcoholímetro, cultura vial y coordinación con Movilidad.</p>
+            <div class="tags">
+              <span class="tag">Vialidad</span>
+              <span class="tag">Operativos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="blockInner">
+            <h3>Prevención de violencia familiar</h3>
+            <p>Canalización, orientación y protección; coordinación con Amar a San Luis y Salud.</p>
+            <div class="tags">
+              <span class="tag">Atención</span>
+              <span class="tag">Canalización</span>
+              <span class="tag">Protección</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="blockInner">
+            <h3>Capacitación y cultura de denuncia</h3>
+            <p>Guías ciudadanas, prevención del delito digital, y autoprotección.</p>
+            <div class="tags">
+              <span class="tag">Ciberseguridad</span>
+              <span class="tag">Autoprotección</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="blockInner">
+            <h3>Atención a turistas y eventos</h3>
+            <p>Operativos especiales y presencia coordinada en eventos masivos y zonas turísticas.</p>
+            <div class="tags">
+              <span class="tag">Eventos</span>
+              <span class="tag">Turismo seguro</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INFORMACIÓN ÚTIL -->
+    <section id="util" aria-label="Guías y recomendaciones">
+      <div class="sectionTitle">
+        <div>
+          <h2>Guías rápidas</h2>
+          <p>Recomendaciones de seguridad y autoprotección.</p>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="block">
+          <div class="blockInner">
+            <h3>¿Cuándo llamar 911?</h3>
+            <p>Emergencias con riesgo inmediato: violencia en curso, accidente grave, incendio, persona desaparecida con riesgo, robo con violencia.</p>
+            <div class="tags">
+              <span class="tag">Emergencia</span>
+              <span class="tag">Respuesta inmediata</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="blockInner">
+            <h3>¿Cuándo usar 089?</h3>
+            <p>Denuncia anónima: venta de drogas, casas de seguridad, extorsión, armas, actividades sospechosas (sin riesgo inmediato).</p>
+            <div class="tags">
+              <span class="tag">Denuncia</span>
+              <span class="tag">Anónimo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tableWrap" aria-label="Directorio de atención">
+        <table>
+          <thead>
+            <tr>
+              <th>Servicio</th>
+              <th>Canal</th>
+              <th>Uso recomendado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Emergencias</strong></td>
+              <td class="mono">911</td>
+              <td>Riesgo inmediato, urgencias, atención inmediata.</td>
+            </tr>
+            <tr>
+              <td><strong>Denuncia anónima</strong></td>
+              <td class="mono">089</td>
+              <td>Reporte sin riesgo inmediato, protección de identidad.</td>
+            </tr>
+            <tr>
+              <td><strong>Reporte web</strong></td>
+              <td class="mono">Formulario</td>
+              <td>Incidencias no urgentes, seguimiento y canalización.</td>
+            </tr>
+            <tr>
+              <td><strong>Atención ciudadana</strong></td>
+              <td class="mono">Correo / Ventanilla</td>
+              <td>Orientación, trámites, quejas, sugerencias.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- REPORTE CIUDADANO -->
+    <section id="reporte" aria-label="Reporte ciudadano">
+      <div class="sectionTitle">
+        <div>
+          <h2>Reporte ciudadano en línea</h2>
+          <p>Canal para incidencias no urgentes (no sustituye 911).</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="cardInner">
+          <div class="kicker"><span class="bar" aria-hidden="true"></span> Reporte web</div>
+          <p class="sub" style="font-size:13px;margin-top:8px;">
+            Completa la información para canalizar tu reporte. Si existe riesgo inmediato, llama al <span class="mono">911</span>.
+          </p>
+
+          <form class="form" id="formReporte">
+            <input class="input" name="nombre" placeholder="Nombre (opcional)" autocomplete="name" />
+            <input class="input" name="telefono" placeholder="Teléfono (opcional)" inputmode="tel" />
+            <select name="tipo">
+              <option value="">Tipo de reporte (elige uno)</option>
+              <option>Actividad sospechosa</option>
+              <option>Robo (sin violencia)</option>
+              <option>Extorsión / fraude</option>
+              <option>Violencia familiar</option>
+              <option>Delito digital</option>
+              <option>Otro</option>
+            </select>
+            <select name="municipio">
+              <option value="">Municipio (elige uno)</option>
+              <option>San Luis Potosí</option>
+              <option>Soledad de Graciano Sánchez</option>
+              <option>Matehuala</option>
+              <option>Rioverde</option>
+              <option>Ciudad Valles</option>
+              <option>Otro</option>
+            </select>
+
+            <textarea name="detalle" placeholder="Describe lo ocurrido (qué, cuándo, dónde, cómo). Incluye referencias y datos útiles."></textarea>
+
+            <div style="grid-column:1/-1; display:flex; gap:10px; flex-wrap:wrap; margin-top:2px;">
+              <button class="btn" type="submit">Enviar reporte <span class="pill">OK</span></button>
+              <button class="btn secondary" type="reset">Limpiar</button>
+              <a class="btn danger" href="tel:911">Llamar 911 <span class="pill">Urgente</span></a>
+            </div>
+          </form>
+
+          <p class="help">
+            <strong>Privacidad:</strong> evita publicar datos sensibles de terceros (domicilios exactos, placas, rostros) si no es necesario.
+            Este formulario es un ejemplo y debe integrarse a un sistema oficial para generar folio y seguimiento.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRANSPARENCIA -->
+    <section id="transparencia" aria-label="Transparencia">
+      <div class="sectionTitle">
+        <div>
+          <h2>Transparencia y rendición de cuentas</h2>
+          <p>Información pública, indicadores y normatividad.</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="block">
+          <div class="blockInner">
+            <h3>Marco normativo</h3>
+            <p>Leyes, reglamentos, protocolos y lineamientos de actuación.</p>
+            <div class="tags">
+              <span class="tag">Normatividad</span>
+              <span class="tag">Protocolos</span>
+            </div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="blockInner">
+            <h3>Indicadores (tablero)</h3>
+            <p>Datos agregados y reportes por periodo (ejemplo): incidencia, tiempos de respuesta, prevención.</p>
+            <div class="tags">
+              <span class="tag">Datos</span>
+              <span class="tag">Indicadores</span>
+              <span class="tag">Reportes</span>
+            </div>
+          </div>
+        </div>
+        <div class="block">
+          <div class="blockInner">
+            <h3>Quejas y asuntos internos</h3>
+            <p>Canal de atención para conducta indebida, supervisión y seguimiento.</p>
+            <div class="tags">
+              <span class="tag">Control interno</span>
+              <span class="tag">Derechos humanos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tableWrap" aria-label="Enlaces de transparencia (placeholders)">
+        <table>
+          <thead>
+            <tr>
+              <th>Sección</th>
+              <th>Descripción</th>
+              <th>Enlace</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Transparencia</strong></td>
+              <td>Obligaciones, formatos, información pública.</td>
+              <td><a href="#" class="mono">/transparencia</a></td>
+            </tr>
+            <tr>
+              <td><strong>Normatividad</strong></td>
+              <td>Protocolos y reglamentos de actuación.</td>
+              <td><a href="#" class="mono">/normatividad</a></td>
+            </tr>
+            <tr>
+              <td><strong>Indicadores</strong></td>
+              <td>Tablero estadístico y reportes trimestrales.</td>
+              <td><a href="#" class="mono">/indicadores</a></td>
+            </tr>
+            <tr>
+              <td><strong>Comunicados</strong></td>
+              <td>Boletines, alertas y campañas preventivas.</td>
+              <td><a href="#" class="mono">/comunicados</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="help">
+        Nota: evita publicar información operativa sensible. Los indicadores deben ser agregados y con criterios de seguridad.
+      </p>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" aria-label="Contacto">
+      <div class="sectionTitle">
+        <div>
+          <h2>Contacto y atención ciudadana</h2>
+          <p>Canales oficiales de comunicación.</p>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="block">
+          <div class="blockInner">
+            <h3>Ventanilla</h3>
+            <p>
+              Dirección: <span class="muted">[Agregar dirección oficial]</span><br/>
+              Horario: <span class="muted">[Lun–Vie 9:00–15:00]</span>
+            </p>
+            <div class="tags">
+              <span class="tag">Atención</span>
+              <span class="tag">Orientación</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="blockInner">
+            <h3>Canales digitales</h3>
+            <p>
+              Correo: <a href="mailto:atencion.seguridad@slp.gob.mx" class="mono">atencion.seguridad@slp.gob.mx</a><br/>
+              Teléfono: <span class="muted mono">[Agregar teléfono]</span>
+            </p>
+            <div class="tags">
+              <span class="tag">Correo</span>
+              <span class="tag">Seguimiento</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:14px;">
+        <div class="cardInner">
+          <div class="kicker"><span class="bar" aria-hidden="true"></span> Mensaje</div>
+          <p class="sub" style="font-size:13px;margin-top:8px;">
+            Para dudas generales, sugerencias o solicitudes de información (no urgentes).
+          </p>
+
+          <form class="form" id="formContacto">
+            <input class="input" name="nombre" placeholder="Nombre" autocomplete="name" required />
+            <input class="input" name="correo" placeholder="Correo" inputmode="email" autocomplete="email" required />
+            <select name="asunto" required>
+              <option value="">Asunto (elige uno)</option>
+              <option>Solicitud de información</option>
+              <option>Queja / sugerencia</option>
+              <option>Campaña preventiva</option>
+              <option>Vinculación institucional</option>
+              <option>Otro</option>
+            </select>
+            <input class="input" name="telefono" placeholder="Teléfono (opcional)" inputmode="tel" />
+            <textarea name="mensaje" placeholder="Escribe tu mensaje…" required></textarea>
+
+            <div style="grid-column:1/-1; display:flex; gap:10px; flex-wrap:wrap; margin-top:2px;">
+              <button class="btn secondary" type="submit">Enviar mensaje</button>
+              <a class="btn danger" href="tel:911">Llamar 911 <span class="pill">Urgente</span></a>
+              <a class="btn" href="tel:089">Denuncia 089 <span class="pill">Anónima</span></a>
+            </div>
+          </form>
+
+          <p class="help">
+            Este formulario es demostrativo. Para uso real, conéctalo a un sistema de atención y asignación de folios.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer role="contentinfo">
+      <div class="footerRow">
+        <div>
+          <strong>Secretaría de Seguridad Ciudadana Estatal</strong> · Gobierno del Estado de San Luis Potosí<br/>
+          <span class="muted">Administración 2045–2051 · Titular: Oscar Emmanuel Cerda Tello</span>
+        </div>
+        <div class="muted">
+          Plantilla HTML institucional · Seguridad (responsive).
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" aria-live="polite"></div>
+
+  <script>
+    const toast = document.getElementById("toast");
+    let toastTimer = null;
+
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 1500);
+    }
+
+    // Formularios (demo)
+    document.getElementById("formReporte").addEventListener("submit", (e) => {
+      e.preventDefault();
+      showToast("Reporte enviado (demo). Integra a un sistema oficial para folio y seguimiento.");
+      e.target.reset();
+    });
+
+    document.getElementById("formContacto").addEventListener("submit", (e) => {
+      e.preventDefault();
+      showToast("Mensaje enviado (demo). Integra a un sistema oficial para respuesta.");
+      e.target.reset();
+    });
+
+    // Mejora: scroll suave en anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href");
+        if(!id || id === "#") return;
+        const el = document.querySelector(id);
+        if(!el) return;
+        e.preventDefault();
+        el.scrollIntoView({behavior:"smooth", block:"start"});
+      });
+    });
+  </script>
+</body>
+</html>
